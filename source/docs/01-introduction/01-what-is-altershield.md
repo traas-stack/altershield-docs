@@ -1,4 +1,8 @@
-# What Is AlterShield
+---
+hide_title: true
+sidebar_label: What Is AlterShield
+pagination_next: null
+---
 
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
