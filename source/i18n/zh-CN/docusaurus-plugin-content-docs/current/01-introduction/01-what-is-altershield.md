@@ -27,7 +27,7 @@ pagination_next: null
 
 Open Change Management Specification是变更管控的一套技术标准，是指为信息技术相关企业提供具备普适性的变更管控方案。可将不同业务背景的部门或企业所做的相关变更，通过本方案中的技术标准进行整合，进而可实现变更全生命周期的感知、干预、风险分析和风险防控等能力，从而降低变更造成的业务影响。
 
-在此之前，您可能还需要了解： [什么是变更管控](02-open-change-management-specification.md).
+在此之前，您可能还需要了解： [什么是变更管控](02-what-is-change-management.md).
 
 ## 它提供了什么
 

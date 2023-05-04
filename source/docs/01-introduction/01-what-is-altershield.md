@@ -28,7 +28,7 @@ pagination_next: null
 
 Open Change Management Specification is a set of technical standards for change control, which aims to provide universal change control solutions for IT-related enterprises. With the use of technical standards in this program, changes made by departments or enterprises with different business backgrounds can be integrated, enabling the ability to perceive, intervene, analyze and mitigate risks throughout the entire change lifecycle, thereby reducing the impact of changes on business.
 
-Before we begin, you may need to understand [what change management is](02-open-change-management-specification.md).
+Before we begin, you may need to understand [what change management is](02-what-is-change-management.md).
 
 ## What does it provide
 
