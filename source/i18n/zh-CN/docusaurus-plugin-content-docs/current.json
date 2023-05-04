@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Introduction": {
+    "message": "介绍",
+    "description": "The label for category Introduction in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Quick Start": {
+    "message": "快速开始",
+    "description": "The label for category Quick Start in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Change Access": {
+    "message": "变更接入",
+    "description": "The label for category Change Access in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Intergenerational": {
+    "message": "接入代际",
+    "description": "The label for category Intergenerational in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Change Defender": {
+    "message": "变更防御",
+    "description": "The label for category Change Defender in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.AlterShield Operator": {
+    "message": "AlterShield Operator",
+    "description": "The label for category AlterShield Operator in sidebar tutorialSidebar"
+  }
+}

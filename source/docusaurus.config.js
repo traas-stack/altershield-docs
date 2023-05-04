@@ -3,7 +3,18 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
-(module.exports = {
+
+const i18nConfig = {
+  defaultLocale: 'en',
+  locales:['en','zh-CN'],
+  localeConfigs:{
+    en: { label: 'English',path: 'en' },
+    'zh-CN': { label: `中文（中国)`,path:'zh-CN' }
+  }
+}
+
+module.exports = {
+  i18n: i18nConfig,
   title: 'AlterShield',
   tagline: 'Open Change Management Specification',
   url: 'https://your-docusaurus-test-site.com',
@@ -20,14 +31,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // // Please change this to your repo.
-          // editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/edit/main/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -48,10 +54,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         items: [
           {to : '/docs/introduction/what-is-altershield', label: 'Document', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            type: 'localeDropdown',
-            position: 'right',
-          },
+          {type: 'localeDropdown', position: 'right',},
           {
             href: 'https://github.com/traas-stack/altershield',
             label: 'GitHub',
@@ -69,10 +72,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 label: 'AlterShield',
                 to: '/docs/introduction/what-is-altershield',
               },
-              // {
-              //   label: 'AlterShield-Operator',
-              //   to: '/docs/introduction/what-is-altershield',
-              // },
             ],
           },
           {
@@ -109,4 +108,4 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         darkTheme: darkCodeTheme,
       },
     }),
-});
+};
