@@ -12,7 +12,7 @@ pagination_next: null
 <h3 align="center">AlterShield</h3>
 
   <p align="center">
-    开放式变更管理规范
+    Open Change Management Specification
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">查看演示</a>

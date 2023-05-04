@@ -1,5 +1,5 @@
 ---
-sidebar_label: 变更信息模型
+sidebar_label: '变更信息模型'
 ---
 # 变更信息模型
 ---
