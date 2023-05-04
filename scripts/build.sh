@@ -1,6 +1,8 @@
 #!/bin/bash
 
-cd ./source
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_DIR"/source
 
 # Check if node and npm are installed
 if ! command -v node &> /dev/null; then
@@ -14,13 +16,13 @@ if ! command -v npm &> /dev/null; then
 fi
 
 # Check if docusaurus is installed
-if ! command -v docusaurus &> /dev/null
-then
-    echo "docusaurus is not installed, installing..."
-    npm install --global docusaurus
+if npm ls docusaurus | grep -q 'docusaurus'; then
+  echo "docusaurus is already installed"
 else
-    echo "docusaurus is already installed"
+  echo "docusaurus is not installed, installing..."
+  npm install --global docusaurus
 fi
+
 
 # execute npm order
 npm run build
@@ -36,8 +38,8 @@ fi
 
 # 拷贝 build 目录下的内容到指定目录并覆盖原先的内容
 if [ -d "build" ]; then
-    cp -rf build/* ../altershield-site
-    echo "Build files have been copied to ../altershield-site."
+    cp -rf build/* "$PROJECT_DIR"/altershield-site
+    echo "Build files have been copied to "$PROJECT_DIR"/altershield-site."
 else
     echo "Error: build directory not found." >&2
     exit 1
