@@ -1,11 +1,14 @@
 # What is AlterShield Operator
 ## Overview
-AlterShield Operator是基于Operator-SKD开发的一款Kubernetes Operator，在Kubernetes集群中部署用于对Workload资源的管控，目前支持管控的Workload资源有Deployment，其他通用资源正在持续开发中。其核心设计目标是开发迅速、学习简单、易扩展
+AlterShield Operator is a Kubernetes Operator developed based on Operator-SKD. Its purpose is to improve the stability and reliability of Kubernetes clusters by controlling Workload resources. Currently, AlterShield Operator supports controlling Deployment resources, while other common resources are continuously being developed. Its core design goals are rapid development, easy learning, and easy scalability.
 
 ## Features
+AlterShield Operator has the following main functions:
 
-1. 准入控制，对Deployment资源的部署进行管控，防止异常状态下的资源部署
+1. Admission control, controlling the deployment of Workload resources to prevent deployment under abnormal conditions
 
-2. 运行检测，对Deployment资源下的POD进行监测，确保资源的运行状态
+2. Run detection, monitoring the PODs under Workload resources to ensure the running status of resources
 
-3. 回滚自愈，对Deployment资源(滚动发布)的异常状态进行自动回滚，取消异常的发布
+3. Rollback self-healing, automatically rolling back the abnormal state of Workload resources and self-healing the rollback exception 
+
+Through these functions, AlterShield Operator can help users better manage Workload resources in Kubernetes clusters and improve system stability and reliability.

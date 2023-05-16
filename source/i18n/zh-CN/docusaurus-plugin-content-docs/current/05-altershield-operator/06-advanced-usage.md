@@ -1,33 +1,33 @@
-# Advanced Usage
-This document introduces the advanced features of AlterShield Operator.
+# 高级功能
+本文档介绍了 AlterShield Operator 的高级功能。
 
-## 1. CRD in AlterShield Operator
-**Currently, there are three CRDs defined in AlterShield Operator:**
-  - opsconfiginfoes.app.ops.cloud.alipay.com (referred to as oopsconfiginfoes)
-  - changeworkloads.app.ops.cloud.alipay.com (referred to as ochangeworkloads)
-  - changepods.app.ops.cloud.alipay.com (referred to as ochangepods)
+## 1. AlterShield Operator 中 CRD 
+**目前 AlterShield Operator 中定义有三个crd，分别是：**
+  - opsconfiginfoes.app.ops.cloud.alipay.com (简称 opsconfiginfoes)
+  - changeworkloads.app.ops.cloud.alipay.com (简称 changeworkloads)
+  - changepods.app.ops.cloud.alipay.com (简称 changepods)
 
-**The YAML files are saved in the config/crd/bases directory.**
+**yaml文件保存在 config/crd/bases 目录下**
 ### 1.1 opsconfiginfoes
-**opsconfiginfoes is used to configure the configuration information of AlterShield Operator.**
-- Run the following command to view opsconfiginfoes:
+**opsconfiginfoes 是用于配置 AlterShield Operator 的配置信息**
+- 执行以下命令查看 opsconfiginfoes
 ````sh
 kubectl get opsconfiginfo -n altershieldoperator-system
 ````
-- There are two configuration information, which are:
+- 存在两个配置信息，分别是：
 ````
 NAME       AGE
 blocking   25h
 branch     25h
 ````
-#### 1.1.1 Blocking Configuration
-**When AlterShield detects abnormalities in a pod, AlterShield Operator will block the pod according to the blocking configuration information.**
-- Run the following command to view the blocking configuration information:
+#### 1.1.1 阻断配置
+**当经过 AlterShield 对 pod 进行检测后，如果出现异常，AlterShield Operator 会根据阻断配置信息对 pod 进行阻断。**
+- 执行以下命令查看 blocking 配置信息
 ````sh
 kubectl get opsconfiginfo blocking -n altershieldoperator-system -o yaml
 ````
-- The content of the blocking configuration information is as follows:
-```
+- blocking 配置信息内容如下：
+````
 apiVersion: app.ops.cloud.alipay.com/v1alpha1
 kind: OpsConfigInfo
 metadata:
@@ -39,22 +39,22 @@ metadata:
   uid: 213514db-33d0-4289-8d56-e3dea227e9c1
 spec:
   enable: true
-  remark: Enabling Blockade
+  remark: 是否开启阻断
   type: isBlockingUp
-```
-- .spec.type is isBlockingUp, indicating whether blocking is enabled
-- .spec.enable is true, indicating that blocking is **enabled** (default configuration).
-##### Note
-- You can manually set .spec.enable to false to disable blocking.
-- When .spec.enable is false, if an exception occurs, the deployment will be released normally without blocking.
-- If a deployment has been blocked, it will not be released normally when .spec.enable is false.
-#### 1.1.2 Batch Control Configuration
-**ChangePod will report pod information to AlterShield. This configuration determines whether to enable batch control. When it is turned off, there will be only one pod's information in each ChangePod. When it is turned on, there will be multiple pods' information in each ChangePod (under construction).**
-- Run the following command to view the branch configuration information:
+````
+- .spec.type 为 isBlockingUp，表示是否开启阻断
+- .spec.enable 为 true，表示**开启**阻断(默认配置)
+##### 说明
+- 可以手动将 .spec.enable 设置为 false，表示关闭阻断
+- 当 .spec.enable 为 false 时，当出现异常时，不会阻断deployment的正常发布
+- 已经阻断的deployment，当 .spec.enable 为 false 时，不会恢复正常发布
+#### 1.1.2 批量防控配置
+**ChangePod 会对 pod 信息上报到 AlterShield，此处配置是否开启批量防控，当关闭时，每个ChangePod中将有且仅有一个pod的信息。当开启时，每个ChangePod中将有多个pod的信息（建设中）**
+- 执行以下命令查看 branch 配置信息
 ````sh
 kubectl get opsconfiginfo branch -n altershieldoperator-system -o yaml
 ````
-- The content of the branch configuration information is as follows:
+- branch 配置信息内容如下：
 ````
 apiVersion: app.ops.cloud.alipay.com/v1alpha1
 kind: OpsConfigInfo
@@ -68,44 +68,44 @@ metadata:
 spec:
   content: "10"
   enable: false
-  remark: Enabling Batch Protection
+  remark: 是否开启批量防控
   type: isBranch
 ````
-- .spec.type is isBranch, indicating whether batch control is enabled.
-- .spec.enable is false, indicating that batch control is **disabled** (default configuration).
-- .spec.content is 10, indicating that the threshold for batch control is 10.
-##### Note
-- .spec.enable cannot be manually set to true at present.
+- .spec.type 为 isBranch，表示是否开启批量防控
+- .spec.enable 为 false，表示**关闭**批量防控(默认配置)
+- .spec.content 为 10，表示批量防控的阈值为 10
+##### 说明
+- 暂时不能手动将 .spec.enable 设置为 true
 ### 1.2 changeworkloads
-**changeworkloads maps the changing workloads in the cluster, currently supporting Deployment.**
+**changeworkloads 是映射集群中变更的workload，目前支持Deployment**
 
 ![changeworkload-status.png](changeworkload-status.png)
 
-**The changeworkload has the following states:**
-- Init：Initialization state. When a new controlled workload is created, it enters this state.
-- - When in this state, if the upload to AlterShield is successful (default), it will enter the Running state.
-- - When in this state, if the upload to AlterShield fails (under construction), it will enter the Failed state.
-- Running：Running state.
-- - When in this state, if the number of Finished pods reaches the threshold (not enabled by default, the number is 1), a ChangePod will be created.
-- Failed：Failed state.
-- - It will not check the current version until the version changes. The new changeworkload will re-enter the Init state.
-- TimeOutPreThreshold：Timeout status before threshold.
-- - When the [Batch Control Configuration](./advanced-usage#112-batch-control-configuration) of AlterShield Operator is FALSE，
-    if the workload is in the Running state and the number of Finished pods has not reached 1 before reaching the threshold time (default 1 minute), it will enter this status.
-- - When the [Batch Control Configuration](./advanced-usage#112-batch-control-configuration) of AlterShield Operator is TRUE,
-    if the workload is in the Running state and the number of Finished pods has not reached the configured number (default 10) before reaching the threshold time (default 1 minute), it will enter this status.
-- Success：Success status.
-- - When all pods are in the Finished state and all pods pass the AlterShield detection, it will enter this status.
-- - When unable to report to AlterShield during protection, it will also be considered pass, and only when explicitly returned as abnormal will it enter the fail state.
-- - When there is a successful changeworkload, the historical versions of the changeworkload resources will be deleted.
-- Suspend：Suspended status.
-- - When all pods are in the Finished state and there is a pod that does not pass the AlterShield detection, it will enter this status.
-- - When changeworkload is in the Suspend state, it will block the normal deployment of the subsequent Workload resources, and this can be turned off by modifying the [Blocking Configuration](./advanced-usage#111-blocking-configuration)
+**changeworkload中存在如图所示的状态，分别是：**
+- Init：初始化状态，当有新的被管控的Workload创建时，会进入该状态。
+- - 处于该状态时，上报到AlterShield成功（建设中，默认成功），会进入Running状态
+- - 处于该状态时，上报到AlterShield失败（建设中），会进入Failed状态
+- Running：运行中状态。
+- - 处于该状态时，如果Finished的pod个数达到阈值（默认不开启批量，个数为1），会创建一个ChangePod
+- Failed：失败状态。
+- - 将不对当前版本进行检测，直到版本变更后，新的changeworkload重新进入Init状态。
+- TimeOutPreThreshold：阈值前超时状态。
+- - AlterShield Operator的配置[批量防控配置](./advanced-usage#112-批量防控配置)-FALSE，
+    当workload处于Running状态时，如果在达到阈值时间前（默认1分钟）处于Finished的pod还未达到1个，会进入该状态
+- - AlterShield Operator的配置[批量防控配置](./advanced-usage#112-批量防控配置)-TRUE，
+    当workload处于Running状态时，如果在达到阈值时间前（默认1分钟）处于Finished的pod还未达到配置的个数（默认10个），会进入该状态
+- Success：成功状态。
+- - 当所有Pod均处于Finished状态时，并且所有Pod均通过AlterShield检测，会进入该状态
+- - 当防控时未能成功上报到AlterShield，也会认为通过，只有明确返回异常时，才会进入表示未通过
+- - 当有成功状态的changeworkload时，会将历史版本的changeworkload资源删除
+- Suspend：暂停状态。
+- - 当所有Pod均处于Finished状态时，并且存在Pod未通过AlterShield检测，会进入该状态
+- - 当changeworkload处于Suspend状态时，将会对后续正常发布的Workload资源进行阻断，可以通过修改[阻断配置](./advanced-usage#111-阻断配置)来关闭阻断
 ### 1.3 changepods
-**changepods is a mapping of the changing pods in the cluster, with at least one pod corresponding to a changepod.**
+**changepods 是映射集群中变更的pod，一个changepod对应至少一个pod**
 ## 2. 发布阻断与修复
 ### 修改changePod状态，模拟异常情况
-#### 当未配置接入Change Management时，暂时只能手动模拟异常情况
+#### 当未配置接入管控端时，暂时只能手动模拟异常情况
 - 执行命令
 ```sh
 kubectl get changepods sleep--x--c6c45d23c098bdf181853a85b60b5d74--x--1 -o yaml
@@ -284,7 +284,7 @@ kubectl patch deployment sleep -p '{"spec":{"template":{"metadata":{"labels":{"t
 ```
 deployment.apps/sleep patched
 ```
-## 3. Self-healing rollback
+## 3. 自愈回滚
 ### Deployment未能正常发布
 - 见Quick Start中文档 [self-healing-rollback](./quick-start#self-healing-rollback)
 #### 触发当前自愈回滚功能前提条件

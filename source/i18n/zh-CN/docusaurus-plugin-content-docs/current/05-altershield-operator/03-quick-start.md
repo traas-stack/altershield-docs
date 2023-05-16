@@ -1,40 +1,40 @@
-# Quick Start
-This document explains how to quickly run the AlterShield Operator service.
+# 快速入门
+本文档介绍如何快速运行 AlterShield Operator 服务
 ## Getting Started
-Before running the AlterShield Operator service, you need to read the following documents:
-- [Getting Started](./getting-started)
+您在运行 AlterShield Operator 服务之前，需要阅读以下文档：
+- [入门指南](./getting-started)
 
-## Running Local Sever
-### Install dependencies:
+## 运行本地服务
+### 1. 安装依赖:
 ```sh
 go mod tidy
 ```
-### 2. Register the CRD to the Kubernetes cluster:
+### 2. 将crd自定义资源注册到k8s集群中:
 ```sh
 kubectl apply -f config/crd/bases
 ```
-### 3. Use the following command to start the local service:
-**you need to set the environment variable ENVIRONMENT=DEV**
+### 3. 使用以下命令启动本地服务:
+**需要设置环境变量ENVIRONMENT=DEV**
 ```sh
 ENVIRONMENT=DEV make run
 ```
-- When you see the following log, it means the service has started successfully:
+- 当您看到以下日志时，表示服务已经启动成功
 ```
 {"level":"info","ts":"2023-05-10T14:44:33.604+0800","caller":"controller/controller.go:241","msg":"Starting workers","controller":"deployment","controllerGroup":"apps","controllerKind":"Deployment","worker count":5}
 {"level":"info","ts":"2023-05-10T14:44:33.604+0800","caller":"controller/controller.go:241","msg":"Starting workers","controller":"changepod","controllerGroup":"app.ops.cloud.alipay.com","controllerKind":"ChangePod","worker count":20}
 {"level":"info","ts":"2023-05-10T14:44:33.604+0800","caller":"controller/controller.go:241","msg":"Starting workers","controller":"pod","controllerGroup":"","controllerKind":"Pod","worker count":5}
 {"level":"info","ts":"2023-05-10T14:44:33.605+0800","caller":"controller/controller.go:241","msg":"Starting workers","controller":"changeworkload","controllerGroup":"app.ops.cloud.alipay.com","controllerKind":"ChangeWorkload","worker count":5}
 ```
-## Start first test deployment
-### 1. Set the default namespace to be controlled
+## 首次测试部署
+### 1. 将default命名空间设置为被管控
 ```sh
 kubectl label namespace default admission-webhook-altershield=enabled
 ```
-When you see the following log, it means the setting is successful:
+看到以下日志时，表示设置成功：
 ```
 namespace/default labeled
 ```
-### 2. Create a Deployment resource sleep
+### 2. 创建一个Deployment资源 sleep
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -62,15 +62,15 @@ spec:
 ```sh
 kubectl apply -f config/samples/sleep.yaml
 ```
-- When you see the following log, it means the deployment is successful:
+- 当您看到以下日志时，表示部署成功
 ```
 deployment.apps/sleep created
 ```
-### 3. Check if the deployment is successful
+### 3. 检测是否部署成功
 ```sh
 kubectl get pods
 ```
-- When you see 5 sleep pods running, it means the deployment is successful:
+- 当您看到有5个sleep的pod running时，表示部署成功
 ```
 NAME                     READY   STATUS    RESTARTS   AGE
 sleep-5c698f4449-5m5g4   1/1     Running   0          2m
@@ -79,8 +79,8 @@ sleep-5c698f4449-jkv5r   1/1     Running   0          2m
 sleep-5c698f4449-rjgkn   1/1     Running   0          2m
 sleep-5c698f4449-7q9q2   1/1     Running   0          2m
 ```
-## Self-healing rollback
-### 1. Intentionally set the wrong image and modify the label test.
+## 自愈回滚
+### 1. 有意设置为错误的镜像，并修改label test
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -105,19 +105,19 @@ spec:
           command: ["/bin/sleep","infinity"]
           imagePullPolicy: IfNotPresent
 ```
-- Reapply the sleep.yaml:
+- 重新apply sleep.yaml
 ```sh
 kubectl apply -f config/samples/sleep.yaml
 ```
-- When you see the following log, it means the deployment is successful:
+- 当您看到以下日志时，表示部署成功
 ```
 deployment.apps/sleep configured
 ```
-### 2. Check the pod status of the sleep deployment again
+### 2. 再次检测sleep deployment的pod状态
 ```sh
 kubectl get pods
 ```
-- At this point, you will find that the pod status of the sleep deployment has 4 running and 3 ErrImagePull. This is because the deployment sets an incorrect image and uses rolling deployment, resulting in abnormal status of some pods:
+- 此时您会发现sleep deployment的pod状态有4个running，3个ErrImagePull，这是由于deployment设置错误的镜像并且采用了滚动发布，导致部分pod的状态异常
 ```
 NAME                     READY   STATUS             RESTARTS   AGE
 sleep-5c698f4449-5m5g4   1/1     Running            0          2m49s
@@ -128,12 +128,12 @@ sleep-6c55bbc8d6-m6g64   0/1     ErrImagePull       0          76s
 sleep-6c55bbc8d6-nlzrf   0/1     ImagePullBackOff   0          76s
 sleep-6c55bbc8d6-x7wvc   0/1     ErrImagePull       0          76s
 ```
-### 3. Observe the rollback status
-- After the abnormal pod status exceeds the threshold time (default 2 minutes), the AlterShield Operator will automatically rollback the deployment to the previous normal version (if it exists).
+### 3. 观察回滚状态
+- 当pod状态异常超过阈值时间（默认2分钟）后，AlterShield Operator会自动回滚deployment到上一个正常版本（如果存在）
 ```sh
 kubectl get pods
 ```
-- After waiting for the threshold time, you will find that all the pod status of the sleep deployment are running:
+- 等待阈值时间后，您会发现sleep deployment的pod状态全部为running
 ```
 NAME                     READY   STATUS    RESTARTS   AGE
 sleep-5c698f4449-5m5g4   1/1     Running   0          3m49s
@@ -142,11 +142,11 @@ sleep-5c698f4449-jkv5r   1/1     Running   0          3m49s
 sleep-5c698f4449-rjgkn   1/1     Running   0          3m49s
 sleep-5c698f4449-7q9q2   1/1     Running   0          1m49s
 ```
-### 4. Rollback of version
+### 4. 版本回滚
 ```sh
 kubectl get deployment sleep -o yaml
 ```
-- The current template image of the deployment is busybox, and the test label is "123".
+- 当前deployment的template镜像为busybox，并且test标签为"123"
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
