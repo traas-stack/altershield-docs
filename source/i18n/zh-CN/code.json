@@ -123,6 +123,13 @@
     "message": "{nDocsTagged}「{tagName}」",
     "description": "The title of the page for a docs tag"
   },
+  "theme.docs.versionBadge.label": {
+    "message": "版本：{versionLabel}"
+  },
+  "theme.common.editThisPage": {
+    "message": "编辑此页",
+    "description": "The link label to edit the current page"
+  },
   "theme.docs.versions.unreleasedVersionLabel": {
     "message": "此为 {siteTitle} {versionLabel} 版尚未发行的文档。",
     "description": "The label used to tell the user that he's browsing an unreleased doc version"
@@ -138,13 +145,6 @@
   "theme.docs.versions.latestVersionLinkLabel": {
     "message": "最新版本",
     "description": "The label used for the latest version suggestion link label"
-  },
-  "theme.docs.versionBadge.label": {
-    "message": "版本：{versionLabel}"
-  },
-  "theme.common.editThisPage": {
-    "message": "编辑此页",
-    "description": "The link label to edit the current page"
   },
   "theme.common.headingLinkTitle": {
     "message": "{heading}的直接链接",
@@ -174,6 +174,10 @@
     "message": "关闭",
     "description": "The ARIA label for close button of announcement bar"
   },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "最近博文导航",
+    "description": "The ARIA label for recent posts in the blog sidebar"
+  },
   "theme.CodeBlock.copied": {
     "message": "复制成功",
     "description": "The copied button label on code blocks"
@@ -186,17 +190,13 @@
     "message": "复制",
     "description": "The copy button label on code blocks"
   },
-  "theme.CodeBlock.wordWrapToggle": {
-    "message": "切换自动换行",
-    "description": "The title attribute for toggle word wrapping button of code block lines"
-  },
-  "theme.blog.sidebar.navAriaLabel": {
-    "message": "最近博文导航",
-    "description": "The ARIA label for recent posts in the blog sidebar"
-  },
   "theme.DocSidebarItem.toggleCollapsedCategoryAriaLabel": {
     "message": "打开/收起侧边栏菜单「{label}」",
     "description": "The ARIA label to toggle the collapsible sidebar category"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "切换自动换行",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
   },
   "theme.NavBar.navAriaLabel": {
     "message": "主导航",
@@ -205,10 +205,6 @@
   "theme.navbar.mobileLanguageDropdown.label": {
     "message": "选择语言",
     "description": "The label for the mobile language switcher dropdown"
-  },
-  "theme.TOCCollapsible.toggleButtonLabel": {
-    "message": "本页总览",
-    "description": "The label used by the button on the collapsible TOC component"
   },
   "theme.blog.post.readMore": {
     "message": "阅读更多",
@@ -234,21 +230,25 @@
     "message": "收起侧边栏",
     "description": "The title attribute for collapse button of doc sidebar"
   },
-  "theme.docs.sidebar.navAriaLabel": {
-    "message": "文档侧边栏",
-    "description": "The ARIA label for the sidebar navigation"
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "本页总览",
+    "description": "The label used by the button on the collapsible TOC component"
   },
   "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
     "message": "关闭导航栏",
     "description": "The ARIA label for close button of mobile sidebar"
   },
-  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
-    "message": "← 回到主菜单",
-    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "文档侧边栏",
+    "description": "The ARIA label for the sidebar navigation"
   },
   "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
     "message": "切换导航栏",
     "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← 回到主菜单",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
   },
   "theme.docs.sidebar.expandButtonTitle": {
     "message": "展开侧边栏",

@@ -31,10 +31,10 @@ module.exports = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          // path: '/docs',
+          routeBasePath: '/'
         },
-        blog: {
-          showReadingTime: true,
-        },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -52,8 +52,6 @@ module.exports = {
           src: 'img/logo.svg',
         },
         items: [
-          {to : '/docs/introduction/what-is-altershield', label: 'Document', position: 'left'},
-          {to: '/blog', label: 'Blog', position: 'left'},
           {type: 'localeDropdown', position: 'right',},
           {
             href: 'https://github.com/traas-stack/altershield',
@@ -64,43 +62,6 @@ module.exports = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'AlterShield',
-                to: '/docs/introduction/what-is-altershield',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/traas-stack/altershield',
-              },
-            ],
-          },
-        ],
         copyright: `Copyright © ${new Date().getFullYear()} AlterShield.`,
       },
       prism: {

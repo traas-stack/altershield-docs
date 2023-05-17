@@ -13,7 +13,7 @@ sidebar_label: '概述'
 
 ### 变更场景接入
 
-在前文 [AlterShield](../01-introduction/01-what-is-altershield.md) 中介绍了 Open Change Management Specification 为您提供的变更管控解决方案。其中包含了两个关键点：
+在前文 [AlterShield](/) 中介绍了 Open Change Management Specification 为您提供的变更管控解决方案。其中包含了两个关键点：
 1. 变更管控提供了一套变更信息模型，可以将不同业务背景的变更进行统一的结构化约束。
 2. 变更管控提供了一套分代际的变更生命周期接入方式，为后续的变更风险管控提供切面入口。
 

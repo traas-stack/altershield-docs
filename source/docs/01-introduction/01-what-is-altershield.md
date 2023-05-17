@@ -2,6 +2,7 @@
 hide_title: true
 sidebar_label: What Is AlterShield
 pagination_next: null
+slug: /
 ---
 
 <div align="center">
