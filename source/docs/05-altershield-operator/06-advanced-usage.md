@@ -103,14 +103,14 @@ spec:
 - - When changeworkload is in the Suspend state, it will block the normal deployment of the subsequent Workload resources, and this can be turned off by modifying the [Blocking Configuration](./advanced-usage#111-blocking-configuration)
 ### 1.3 changepods
 **changepods is a mapping of the changing pods in the cluster, with at least one pod corresponding to a changepod.**
-## 2. 发布阻断与修复
-### 修改changePod状态，模拟异常情况
-#### 当未配置接入Change Management时，暂时只能手动模拟异常情况
-- 执行命令
+## 2. Blocking and Repairing Releases
+### Modifying the changePod Status to Simulate an Exceptional Case
+#### When AlterShield is not configured, exceptional cases can only be manually simulated.
+- Run the command
 ```sh
 kubectl get changepods sleep--x--c6c45d23c098bdf181853a85b60b5d74--x--1 -o yaml
 ```
-- 观察输出
+- Observe the output
 ```yaml
 apiVersion: app.ops.cloud.alipay.com/v1alpha1
 kind: ChangePod
@@ -148,11 +148,11 @@ status:
   updateTime: "2023-05-11 15:46:17"
   updateTimeUnix: 1683791177
 ```
-- 获取.spec.podInfos字段并修改status内容
+- Retrieve the .spec.podInfos field and modify the status content
 ```sh
 kubectl patch changepod --subresource=status sleep--x--c6c45d23c098bdf181853a85b60b5d74--x--1 -p '{"status":{"podResults":[{"app":"sleep","hostName":"sleep-5c698f4449-fsb27","ip":"10.244.1.198","namespace":"default","pod":"sleep-5c698f4449-fsb27","workSpace":"default","verdict":"unpass","message":"find error"}], "message": "PostFinish"}}' --type merge
 ```
-- 重新观察ChangePod与ChangeWorkload资源
+- Re-observe the ChangePod and ChangeWorkload resources
 ```sh
 kubectl get changepods
 kubectl get changeworkloads
@@ -174,10 +174,10 @@ apiVersion: v1
 items:
 - apiVersion: app.ops.cloud.alipay.com/v1alpha1
   kind: ChangeWorkload
-  metadata: ...(略)
-  spec: ...(略)
+  metadata: ...
+  spec: ...
   status:
-    ...(略)
+    ...
     defenseCheckFailPods:
     - app: sleep
       hostName: sleep-5c698f4449-fsb27
@@ -194,7 +194,7 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  ...(略)
+  ...
   labels:
     admission-webhook-altershield.antgroup.com/version: c6c45d23c098bdf181853a85b60b5d74
     altershield.defense.antgroup.com/defense-status: processed
@@ -202,25 +202,25 @@ metadata:
     app: sleep
   name: sleep
   namespace: default
-spec: ...(略)
-status: ...(略)
+spec: ...
+status: ...
 ```
-- ChangePod资源的 **status** 字段为 **ExecuteDone** 代表已经完成了运行检测
-- ChangePod资源的 **message** 字段为 **PostFinish** 代表执行检测成功
-- ChangeWorkload资源的 **status** 字段为 **Suspend** 代表发布发现异常，已经暂停后续发布
-- ChangeWorkload资源的 **status.defenseCheckFailPods** 中包含了所有检测失败的Pod信息
-- Deployment资源的 **labels.altershield.defense.antgroup.com/suspend** 字段为 **1683791175** 代表暂停发布的时间戳
-### 修改Deployment资源，模拟正常发布
-- 执行命令
+- The **status** field of the ChangePod resource being **ExecuteDone** means that the run check has been completed.
+- The **message** field of the ChangePod resource being **PostFinish** means that the check was successful.
+- The **status** field of the ChangeWorkload resource being **Suspend** means that an exception was detected during the release and subsequent releases have been suspended.
+- The **status.defenseCheckFailPods** field of the ChangeWorkload resource contains information about all the pods that failed the check.
+- The **labels.altershield.defense.antgroup.com/suspend** field of the Deployment resource being **1683791175** means that the release was suspended at that timestamp.
+### Modifying the Deployment Resource to Simulate a Normal Release
+- Run the command
 ```sh
 kubectl patch deployment sleep -p '{"spec":{"template":{"metadata":{"labels":{"test":"test"}}}}}' --type merge
 ```
-- 将会触发Webhook的拦截
+- This will trigger the Webhook interception.
 ```
 Error from server (deployment sleep is suspended): admission webhook "vdeployment.kb.io" denied the request: deployment sleep is suspended
 ```
-- 此时发布已经被暂停，需要进行修复后才能继续正常发布
-### 修改Deployment资源，模拟修复发布
+- **At this point, the release has been suspended and needs to be repaired before normal releases can continue.**
+### Modifying the Deployment Resource to Simulate a Repair Release
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -246,61 +246,62 @@ spec:
           command: ["/bin/sleep","infinity"]
           imagePullPolicy: IfNotPresent
 ```
-- 执行命令
+- Run the command
 ```sh
 kubectl apply -f ./config/samples/sleep.yaml
 ```
-- 命令执行成功
+- The command executes successfully.
 ```
 deployment.apps/sleep configured
 ```
-- 修复sleep Deployment资源，需添加 **altershield.defense.antgroup.com/ignored-suspend** 字段
-- 将会忽略拦截功能，进入发布流程
-### 查看ChangeWorkload资源
-- 执行命令
+- Repair the sleep Deployment resource by adding the **altershield.defense.antgroup.com/ignored-suspend** field.
+- The interception function will be ignored and the release will enter the release process.
+### View the ChangeWorkload Resource
+- Run the command
 ```sh
 kubectl get changeworkloads
 ```
-- 此时同时存在两个版本的ChangeWorkload资源
+- At this point, two versions of the ChangeWorkload resource exist simultaneously.
 ```
 NAME                                         STATUS    CREATETIME
 sleep--x--6a8ff823a5011291b0f02a1d83c2222d   Running   2023-05-12 14:24:12
 sleep--x--c6c45d23c098bdf181853a85b60b5d74   Suspend   2023-05-12 11:02:28
 ```
-- 等待一段时间后，执行命令
+- After waiting for some time, run the command again.
 ```sh
 kubectl get changeworkloads
 ```
-- 此时只存在一个最新Success版本的ChangeWorkload资源
+- At this point, only the latest Success version of the ChangeWorkload resource exists.
 ```
 NAME                                         STATUS    CREATETIME
 sleep--x--6a8ff823a5011291b0f02a1d83c2222d   Success   2023-05-12 14:24:12
 ```
-- 再次修改Deployment资源，模拟正常发布
+- Modify the Deployment resource again to simulate a normal release.
 ```sh
 kubectl patch deployment sleep -p '{"spec":{"template":{"metadata":{"labels":{"test":"test"}}}}}' --type merge
 ```
-- 发现正常发布成功
+- The normal release is successful.
 ```
 deployment.apps/sleep patched
 ```
 ## 3. Self-healing rollback
-### Deployment未能正常发布
-- 见Quick Start中文档 [self-healing-rollback](./quick-start#self-healing-rollback)
-#### 触发当前自愈回滚功能前提条件
-- 1. 发布过程中，Pod未能正常启动**（未达到Running状态）**超过阈值时间（默认2分钟）
-- 2. Deployment资源的发布策略为默认状态 **RollingUpdate** 不能为 **Recreate**
-- 3. 当前Deployment处于同时存在两个ReplicaSet的运行，且旧版本的ReplicaSet处于 **正常** 状态
-- 4. 当达到阈值时间后，会认为当前发布失败，触发自愈回滚功能，将会回滚到旧版本的ReplicaSet
-### Deployment正常发布（建设中）
-- 见场景 [2-发布阻断与修复](./advanced-usage#2-发布阻断与修复)
-#### 触发当前自愈回滚功能说明
-- 1. 发布过程中，Pod正常启动**（达到Running状态）**，Deployment资源发布成功
-- 2. Deployment资源的发布策略 **不做限制**
-- 3. Deployment历史版本中存在成功发布的版本**（ChangeWorkload为Success）**
-- 4. ChangePod资源与AlterShield中发现其中存在检测**未通过**的Pod信息
-- 5. 当前版本的ChangeWorkload资源处于 **Suspend** 状态，会认为当前发布异常，触发自愈回滚功能
-- 6. 将会回滚到历史版本中最新的成功发布的版本
-#### 待定的相关说明
-- 1. 触发时机：见文档 [异常Deployment的正常发布](./advanced-usage#修改deployment资源模拟正常发布)，当发现异常时会阻止正常的发布并放行修复性的发布，所以会将以接口的形式暴露出来，供用户手动触发
-- 2. 历史版本：目前主要是采用Deployment的ReplicaSet的版本来进行判断，但是这个版本只能保留部分，未必能够满足用户的需求，所以会考虑增加历史版本的功能，可以自定义保留的版本数量
+### Deployment fails to be deployed successfully.
+- Refer to the [self-healing-rollback](./quick-start#self-healing-rollback) section in the Quick Start documentation for more information.
+#### Prerequisites for triggering the current self-healing rollback feature:
+- 1. During the deployment process, if a Pod fails to start **(does not reach the Running state)** for more than the threshold time (default is 2 minutes).
+- 2. The deployment resource is in the default **RollingUpdate** deployment strategy and cannot be **Recreate**.
+- 3. The current deployment has two running ReplicaSets simultaneously, and the old version of the ReplicaSet is in the **normal** state.
+- 4. Once the threshold time is reached, the current deployment is considered a failure, and the self-healing rollback feature is triggered. It will roll back to the old version of the ReplicaSet.
+### Deployment successful deployment (under construction).
+- Refer to the scenario [2-blocking-and-repairing-releases](./advanced-usage#2-blocking-and-repairing-releases)
+#### Description of the current self-healing rollback feature:
+- 1. During the deployment process, if a Pod starts normally **(reaches the Running state)** and the deployment resource is successfully deployed.
+- 2. There are **no restrictions** on the deployment strategy of the deployment resource.
+- 3. There is a successful version in the deployment history **(ChangeWorkload is Success)**.
+- 4. If there is any Pod information in the ChangePod resource and AlterShield that **fails** to pass the check.
+- 5. If the current version of the ChangeWorkload resource is in **Suspend** state, it is considered an abnormal deployment, and the self-healing rollback feature is triggered.
+- 6. It will roll back to the latest successfully deployed version in the deployment history.
+#### Pending related instructions:
+- 1. Trigger timing：Please refer to the documentation [Modifying the Deployment Resource to Simulate a Normal Release](./advanced-usage#modifying-the-deployment-resource-to-simulate-a-repair-release)，When an abnormal deployment is detected, normal deployment will be prevented, and reparative deployment will be allowed. Therefore, it will be exposed as an interface for users to trigger manually.
+- 2. Deployment history：Currently, the version of ReplicaSet in Deployment is mainly used for judgment, but this version can only be partially retained and may not meet the needs of users. Therefore, we will consider adding the functionality of customizing the number of versions to be retained.
+

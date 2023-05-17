@@ -1,8 +1,8 @@
 # Overall Design
-本文档介绍了 AlterShield Operator 的总体设计。
+This document introduces the overall design of AlterShield Operator.
 
 ## 1. Source directory introduction
-AlterShield Operator 的源码目录结构如下：
+The directory structure of AlterShield Operator's source code is as follows:
 ```
 ./apis/
 ./bin/
@@ -13,47 +13,51 @@ AlterShield Operator 的源码目录结构如下：
 ./main.go
 ./Makefile
 ````
-- `apis/`：定义了 AlterShield Operator 中自定义 CRD（Custom Resource Definition）的 API与原生 Kubernetes API 的相关结构体。
-- `bin/`：存放了 AlterShield Operator 的可执行文件。
-- `certs/`：存放了 AlterShield Operator 的证书文件，用于本地调试Webhook。
-- `config/`：存放了 AlterShield Operator 的配置文件。
-- `controllers/`：存放了 AlterShield Operator 的控制器。
-- `routers/`：存放了 AlterShield Operator 的路由，用于 AlterShield Operator 与 AlterShield Server 之间的通信。
-- `runnable/`：存放了 AlterShield Operator 的后台任务。
-- `main.go`：AlterShield Operator 的入口文件。
-- `Makefile`：AlterShield Operator 的编译文件。
+- `apis/`：Contains the API for custom CRD (Custom Resource Definition) as well as the struct definitions related to Kubernetes' native API.
+- `bin/`：Contains the executable file for AlterShield Operator.
+- `certs/`：Contains the certificate files for AlterShield Operator, used for local debugging of Webhook.
+- `config/`：Contains the configuration files for AlterShield Operator.
+- `controllers/`：Contains the controller code for AlterShield Operator.
+- `routers/`：Contains the router code for communication between AlterShield Operator and AlterShield Server.
+- `runnable/`：Contains the background task code for AlterShield Operator.
+- `main.go`：The entry file for AlterShield Operator.
+- `Makefile`：The compilation file for AlterShield Operator.
 ## 2. Architecture design
 ### 2.1. Design target
-AlterShield Operator 作为一个 Kubernetes Operator，其主要功能是通过监听 Kubernetes 中的 CR ，并通过与 AlterShield Server 之间的通信，来实现对 Workload 的管控。
-- 通过Webhook的方式，对 Kubernetes 中的 Workload 进行发板控制。
-- 通过Watch的方式，对 Kubernetes 中的 Workload 与 Pod 进行实时监控。
-- 通过维护 ChangeWorkload，来实现汇总 Kubernetes 中的 Workload 的发布状态。
-- 通过维护 ChangePod 并与 AlterShield Server 之间的通信，来实现对 Kubernetes 中的 Pod 的发布状态的校验。
-- 通过变更 OpsConfigInfo，来实现Operator的配置更新。
+As a Kubernetes Operator, the main function of AlterShield Operator is to control Workload by listening to CRD in Kubernetes and communicating with AlterShield Server. Specifically, the design goals of AlterShield Operator are as follows:
+#### 2.1.1. Version confirmation and release control
+- Use Webhook to confirm the version and release control of Workload in Kubernetes. When a user submits a new version of Workload, AlterShield Operator sends a request through Webhook to confirm the version and release control with AlterShield Server, ensuring that the submitted version complies with security standards and can be deployed correctly to the Kubernetes cluster.
+#### 2.1.2. Real-time monitoring
+- Use Watch to monitor Workload and Pod in Kubernetes in real-time. When a change occurs in Workload or Pod in Kubernetes, AlterShield Operator detects and processes it in real-time to ensure that the status of Workload and Pod in the Kubernetes cluster is synchronized with AlterShield Server.
+#### 2.1.3. Release status summary
+- Use ChangeWorkload to summarize the release status of Workload in Kubernetes. When a user submits a new version of Workload, AlterShield Operator records its status in ChangeWorkload and periodically sends requests to AlterShield Server to update the release status of Workload. This way, users can easily check the release status and change history of Workload.
+#### 2.1.4. Release status verification
+- Use ChangePod and communication with AlterShield Server to verify the release status of Pod in Kubernetes. When a change occurs in Pod in Kubernetes, AlterShield Operator checks its status and verifies its release status through communication with AlterShield Server.
+#### 2.1.5. Configuration update
+- Use OpsConfigInfo to update the configuration of Operator. When a user needs to modify the configuration of AlterShield Operator, they can modify the parameters in OpsConfigInfo to achieve the desired effect. AlterShield Operator will detect the changes in parameters in a timely manner and update its configuration accordingly.
 ### 2.2. System composition
-AlterShield Operator 由以下几个部分组成：
-- Controller：负责监听 Kubernetes 中的 CR与自定义的 CRD，并进行相应的处理。
-- Webhook：负责对 Kubernetes 中的 Workload 进行版本确认与发板控制。
-- Router：负责与 AlterShield Server 之间的回调处理。
-- Runnable：负责后台任务异步。
+AlterShield Operator consists of the following components:
+- Controller：Responsible for listening to CR and custom CRD in Kubernetes and responding accordingly.
+- Webhook：Responsible for version confirmation and release control of Workload in Kubernetes.
+- Router：Responsible for callback processing between AlterShield Operator and AlterShield Server.
+- Runnable：Responsible for asynchronous background tasks.
 ### 2.3. System flow
-AlterShield Operator 的运行流程如下：
+The operating process of AlterShield Operator is as follows:
 ![img.png](img.png)
-Operator Controller 间的关系如下：
+The relationship between Operator Controller is as follows:
 ![img_1.png](controller.png)
-- 1. Webhook 监听 Kubernetes 中的 Deployment，当 Deployment 的Template发生变更时，更新 Deployment 的 Version Label，并判断是否阻断发布。
-- 2. Deployment Controller 监听 Kubernetes 中的 Deployment，并创建对应版本的 ChangeWorkload。
-- 3. Pod Controller 监听 Kubernetes 中的 Pod，并判断当前是否为发布完成的 Pod，若是，则add finished label。
-- 4. ChangeWorkload Controller 监听 Kubernetes 中的 ChangeWorkload、Finished Pod，当 finished pod 达到阈值时，创建 Init 状态的 ChangePod。
-- 5. ChangePod Controller 监听 Kubernetes 中的 ChangePod，当 ChangePod 的状态为 init 时，挑选不超过阈值个数的 Finished Pod，并上报 AlterShield Server。
-- 6. AlterShield Server 回调 Router，Router 调用 CallBack Handle，将信息传递给 ChangePod。
-- 7. ChangePod Controller 监听 Kubernetes 中的 ChangePod，当 ChangePod 的状态为 callback finished 时，根据回调结果更新 ChangePod 的状态并将 ChangePod 的状态更新为 Done。
-- 8. ChangeWorkload Controller 监听 Kubernetes 中的 ChangeWorkload、Done ChangePod，根据 ChangePod 的状态更新 ChangeWorkload 的状态，判断是否阻断发布。
-- 9. Rollback Runnable 检查 Kubernetes 中的 Pod，若发现 Pod 长时间（默认2分钟）未达到 Running 状态，则触发 Rollback 机制。
-- 10. Rollback Runnable 监听 Kubernetes 中的 ChangeWorkload，当 ChangeWorkload 的状态为 rollback 时，触发 Rollback 机制。（建设中）
+- 1. The Webhook listens to the Deployment in Kubernetes. If the Template of the Deployment is changed, it updates the Version Label of the Deployment and determines whether to block the release. The Version Label is a label used to mark the version of the Deployment. Whenever the Template of the Deployment is changed, the value of the Version Label will be updated accordingly. This label helps AlterShield Operator to perform version control and management.
+- 2. The Deployment Controller listens to the Deployment in Kubernetes and creates a corresponding version of ChangeWorkload. ChangeWorkload is a custom resource type in AlterShield Operator that records the version change history of the Deployment. When the Template of the Deployment is changed, the Deployment Controller creates a new ChangeWorkload to record the information of the new version of the Deployment.
+- 3. The Pod Controller listens to the Pod in Kubernetes and determines whether it is a finished Pod. If it is, it adds a Finished Label. The Finished Label is a label used to mark the finished Pod, which helps AlterShield Operator locate the finished Pod and calculate the number of finished Pods.
+- 4. The ChangeWorkload Controller listens to the ChangeWorkload and finished Pod in Kubernetes. When the number of finished Pods reaches the threshold, it creates a ChangePod in the Init state. ChangePod is another custom resource type in AlterShield Operator that records the status and callback results of the released Pods. When the number of finished Pods reaches the threshold, the ChangeWorkload Controller creates a ChangePod in the Init state, which will pass the Pod information to the AlterShield Server in the future.
+- 5. The ChangePod Controller listens to the ChangePod in Kubernetes. When the status of the ChangePod is Init, it selects no more than the threshold number of Finished Pods and passes the information to the AlterShield Server to achieve the callback function through Router and CallBack Handle. The ChangePod Controller listens to the callback results of the AlterShield Server and updates the status of the ChangePod according to the callback results.
+- 6. The ChangePod Controller listens to the ChangePod in Kubernetes. When the status of the ChangePod is Callback Finished, it updates the status of the ChangePod according to the callback results and sets the status of the ChangePod to Done. It then sends this information to the ChangeWorkload Controller.
+- 7. The ChangeWorkload Controller listens to the ChangeWorkload and Done ChangePod in Kubernetes. It updates the status of the ChangeWorkload according to the status of the ChangePod and determines whether to block the release. If the status of all the Pods in the ChangePod passes the verification, the ChangeWorkload Controller will update the status of the ChangeWorkload to Success. Otherwise, it will update it to Suspend.
+- 8. The Rollback Runnable checks the Pod in Kubernetes. If a Pod has not reached the Running state for a long time (default 2 minutes), it triggers the Rollback mechanism. Rollback Runnable is a background task in AlterShield Operator used to check the status of Pods. If a Pod has been in a non Running state for a long time, it triggers an automatic rollback operation to ensure the stability of the Kubernetes cluster.
+- 9. The Rollback Runnable listens to the ChangeWorkload in Kubernetes. When the status of the ChangeWorkload is Rollback, it triggers the Rollback mechanism. The Rollback Runnable also listens to the status of the ChangeWorkload. If the status of the ChangeWorkload is Rollback, it triggers an automatic rollback operation to ensure the stability of the Kubernetes cluster. (Under construction)
 ## 3. Webhook debugging
-### 3.1. 本地调试
-**本文将以 [MINIKUBE](https://minikube.sigs.k8s.io/) 为例，介绍如何在本地调试 Webhook。**
+### 3.1. Local debugging
+**This article will take [MINIKUBE](https://minikube.sigs.k8s.io/) as an example to introduce how to debug Webhook locally.**
 - 1. Start MiniKube
 ```shell
 minikube start --driver=docker
@@ -68,7 +72,7 @@ minikube ssh
 PING host.minikube.internal (192.168.64.1): 56 data bytes
 64 bytes from 192.168.64.1: seq=0 ttl=64 time=0.225 ms
 ```
-- 4. `192.168.64.1` is the IP address that is accessible from the cluster to the host，修改 `config/dev/kustomization.yaml` 中的 `{IP_Address}` 为 `192.168.64.1`
+- 4. `192.168.64.1` is the IP address that is accessible from the cluster to the host，Modify `{IP_Address}` in `config/dev/kustomization.yaml` to 192.168.64.1.
 ```yaml
 bases:
   - ../default
@@ -108,11 +112,11 @@ patches:
     target:
       kind: ValidatingWebhookConfiguration
 ```
-- 6. 修改完成后，执行部署调试版本命令
+- 6. After modification, execute the command to deploy the debug version
 ```shell
 make dev
 ```
-- 7. 通过以下命令，查看 Webhook 是否部署成功
+- 7. Use the following command to check whether the Webhook has been successfully deployed.
 ```shell
 kubectl get mutatingwebhookconfigurations.admissionregistration.k8s.io altershieldoperator-mutating-webhook-configuration -o yaml
 kubectl get validatingwebhookconfigurations.admissionregistration.k8s.io altershieldoperator-validating-webhook-configuration -o yaml
@@ -141,7 +145,7 @@ webhooks:
   - admissionReviewVersions:
       - v1
     clientConfig:
-      caBundle: ...(略)
+      caBundle: ...
       url: https://192.168.64.1:1443/mutate-apps-v1-deployment
     failurePolicy: Fail
     matchPolicy: Equivalent
@@ -188,7 +192,7 @@ webhooks:
   - admissionReviewVersions:
       - v1
     clientConfig:
-      caBundle: ...(略)
+      caBundle: ...
       url: https://192.168.64.1:1443/validate-apps-v1-deployment
     failurePolicy: Fail
     matchPolicy: Equivalent
@@ -211,47 +215,47 @@ webhooks:
     sideEffects: None
     timeoutSeconds: 10
 ```
-**注意：** 以上配置中，Webhook 服务将会调用本地机器的 1443 端口，此时如果有Deployment发布将会因为证书问题而失败，因此需要将证书导出到本地项目中。
-### 3.2. 将集群中证书导出
-- 运行以下命令，查看集群中的证书：
+**Note：** In the above configuration, the Webhook service will call the 1443 port on the local machine. If there is a Deployment release, it will fail due to certificate issues, so the certificate needs to be exported to the local project.
+### 3.2. Exporting Certificates from the Cluster
+- Run the following command to view the certificates in the cluster:
 ```shell
 kubectl get secret -n altershieldoperator-system -o yaml 
 ```
 ```yaml
 apiVersion: v1
 items:
-- apiVersion: v1
-  data:
-    ca.crt: ...(略)
-    tls.crt: ...(略)
-    tls.key: ...(略)
-  kind: Secret
-  metadata:
-    annotations:
-      cert-manager.io/alt-names: ""
-      cert-manager.io/certificate-name: altershieldoperator-serving-cert
-      cert-manager.io/common-name: ""
-      cert-manager.io/ip-sans: 192.168.65.2
-      cert-manager.io/issuer-group: ""
-      cert-manager.io/issuer-kind: Issuer
-      cert-manager.io/issuer-name: altershieldoperator-selfsigned-issuer
-      cert-manager.io/uri-sans: ""
-    creationTimestamp: "2023-05-11T07:29:29Z"
-    name: webhook-server-cert
-    namespace: altershieldoperator-system
-    resourceVersion: "197854"
-    uid: 25261ced-e462-4634-910c-d5862ed60720
-  type: kubernetes.io/tls
+  - apiVersion: v1
+    data:
+      ca.crt: ...
+      tls.crt: ...
+      tls.key: ...
+    kind: Secret
+    metadata:
+      annotations:
+        cert-manager.io/alt-names: ""
+        cert-manager.io/certificate-name: altershieldoperator-serving-cert
+        cert-manager.io/common-name: ""
+        cert-manager.io/ip-sans: 192.168.65.2
+        cert-manager.io/issuer-group: ""
+        cert-manager.io/issuer-kind: Issuer
+        cert-manager.io/issuer-name: altershieldoperator-selfsigned-issuer
+        cert-manager.io/uri-sans: ""
+      creationTimestamp: "2023-05-11T07:29:29Z"
+      name: webhook-server-cert
+      namespace: altershieldoperator-system
+      resourceVersion: "197854"
+      uid: 25261ced-e462-4634-910c-d5862ed60720
+    type: kubernetes.io/tls
 kind: List
 metadata:
   resourceVersion: ""
 ```
-- 将证书导出到本地项目：
+- Export the certificate to the local project:
 ```shell
 kubectl get secrets webhook-server-cert -n  altershieldoperator-system -o jsonpath='{..tls\.crt}' |base64 -d > ./certs/tls.crt
 kubectl get secrets webhook-server-cert -n  altershieldoperator-system -o jsonpath='{..tls\.key}' |base64 -d > ./certs/tls.key
 ```
-- 查看证书文件
+- View the certificate files in the local project:
 ```
 #cat ./certs/tls.crt
 -----BEGIN CERTIFICATE-----
@@ -303,8 +307,8 @@ bEls6FRqab96RlpLk+hjNnsCxl+EcKklxEYVXC+cRKeZERt6g7gfZg==
 
 ```
 
-### 3.3. 本地启动，完成调试
-您在 Webhook 的开发过程中，可以通过以下步骤进行本地启动：
+### 3.3. Local launch and debugging
+During the development process of Webhook, you can launch locally using the following steps:
 - [Quick Start](./quick-start)
 
-**此时，在集群中受到管控的 Namespace 下发布 Deployment，即可触发 Webhook 的调用至本地，可看到 Webhook 的日志输出**
+**At this point, when a Deployment is released in the Namespace controlled by the cluster, it will trigger the call of the Webhook to the local machine, and you can see the log output of the Webhook**
