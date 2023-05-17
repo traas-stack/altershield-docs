@@ -26,7 +26,7 @@ slug: /
 
 ![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)
 
-Open Change Management Specification是变更管控的一套技术标准，是指为信息技术相关企业提供具备普适性的变更管控方案。可将不同业务背景的部门或企业所做的相关变更，通过本方案中的技术标准进行整合，进而可实现变更全生命周期的感知、干预、风险分析和风险防控等能力，从而降低变更造成的业务影响。
+Open Change Management Specification (OCMS)是一套可适用于SRE和DevOps模式的变更管理技术标准。OCMS以数据驱动的方式，提供了普适性的变更管控方案，可整合来自不同部门或企业的变更数据。OCMS通过整合标准化，帮助用户实现对变更全生命周期的感知、干预、风险分析和风险防控等能力，从而降低变更造成的业务影响。OCMS旨在为信息技术相关企业提供一种高效的变更管理解决方案，并帮助用户在SRE和DevOps模式下优化系统表现，提高可靠性和稳定性。
 
 在此之前，您可能还需要了解： [什么是变更管控](02-what-is-change-management.md).
 

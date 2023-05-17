@@ -26,7 +26,8 @@
 1. 首先，明确您当前想要管控的场景，需要何种程度的风险管控策略，对应到哪种代际的管控方案，这几点决定了您后续的接入复杂度。
 2. 其次，明确***变更信息模型***中***基础信息***的概念与您想要管控场景中的概念对应关系。
 ## SDK 定义
-[G0代际接入SDK](04-intergenerational/01-g0.md)  
-[G1代际接入SDK](04-intergenerational/02-g1.md)  
+
+[G0代际接入SDK](04-intergenerational/01-g0.md)
+[G1代际接入SDK](04-intergenerational/02-g1.md)
 [G2代际接入SDK](04-intergenerational/03-g2.md)
 [G3&G4代际接入SDK](04-intergenerational/04-g3&g4.md)
