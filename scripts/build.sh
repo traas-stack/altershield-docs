@@ -38,7 +38,7 @@ fi
 
 # 拷贝 build 目录下的内容到指定目录并覆盖原先的内容
 if [ -d "build" ]; then
-    cp -rf build/* "$PROJECT_DIR"/altershield-site
+    cp -rf build/* "$PROJECT_DIR"/docs
     echo "Build files have been copied to "$PROJECT_DIR"/altershield-site."
 else
     echo "Error: build directory not found." >&2
