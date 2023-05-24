@@ -59,7 +59,7 @@ sidebar_label: '变更信息模型'
 ### JSON Schema定义
 以上，是对于变更信息模型标准定义的三个维度，具体的JSON Schema定义如下：
 
-```java
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
@@ -84,34 +84,6 @@ sidebar_label: '变更信息模型'
       "items": [
         {
           "type": "string"
-        }
-      ]
-    },
-    "changeTargets": {
-      "type": "array",
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "instanceName": {
-              "type": "string"
-            },
-            "changeTargetType": {
-              "type": "object",
-              "properties": {
-                "typeName": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "typeName"
-              ]
-            }
-          },
-          "required": [
-            "instanceName",
-            "changeTargetType"
-          ]
         }
       ]
     },
@@ -219,7 +191,7 @@ sidebar_label: '变更信息模型'
     "changeApps",
     "parentOrderInfo",
     "trace",
-    "tldcTenantCode",
+    "tenantCode",
     "changeSceneKey",
     "bizExecOrderId",
     "platform"

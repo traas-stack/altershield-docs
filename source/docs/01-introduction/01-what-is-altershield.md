@@ -6,8 +6,8 @@ slug: /
 ---
 
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80"/>
+  <a href="https://github.com/traas-stack/altershield">
+    <img src="./img/icon.svg" alt="Logo" width="80" height="80"/>
   </a>
 
 <h3 align="center">AlterShield</h3>
@@ -16,11 +16,11 @@ slug: /
     Open Change Management Specification
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/traas-stack/altershield">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/traas-stack/altershield/issues/new?template=bug_report.md">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/traas-stack/altershield/issues/new?template=feature_request.md">Request Feature</a>
   </p>
 </div>
 

@@ -46,9 +46,8 @@ module.exports = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'AlterShield',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'AlterShield',
           src: 'img/logo.svg',
         },
         items: [

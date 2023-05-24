@@ -1,33 +1,35 @@
 # Change Access SDK
 ---
-## 什么是变更的生命周期接入
-### 背景
-变更管控系统提供统一的管控能力，同时整合上游不同业务中的变更执行。除***信息标准化***外，还包含两个关键的点，分别是***接口标准化***和***能力标准化***。无论下游领域是风险识别还是应急定位，都能在同一个交互泛型里进行扩展，达成各自的目标。
+## What is change lifecycle integration
+### Background
+The change management system provides unified control capabilities and integrates change execution in different businesses upstream. In addition to **standardizing information**, it also includes two key points: **_standardizing interfaces_** and _**standardizing capabilities**_. Regardless of whether the downstream area is risk identification or emergency positioning, they can be extended in the same interaction pattern to achieve their respective goals.
 
-但是，不是所有变更都需要如此庞大且复杂的生命周期管理，部分本身低危且频繁的变更动作，运用这套模式，反而会加大人工成本，降低效率。因此，ChangeRiskPilot提出了***分代际的变更生命周期接入***方案。
+However, not all changes require such a large and complex lifecycle management. For some low-risk and frequent changes, using this model can increase manual costs and reduce efficiency. Therefore, ChangeRiskPilot proposes a **_generational change lifecycle integration_** solution.
 
+### What is a generational change
+As the name suggests, the concept of 'generational' refers to 'successive derivation and inheritance with mutual connections.' In the field of change management, 'generational' refers to the fact that each generation of changes inherits the control ideas and patterns of the first generation, and 'derives' new lifecycle node definitions in this generation to add new extension perspectives and provide new capabilities.
 
-### 什么是变更代际
-顾名思义，代际的概念是指"逐代衍生传承，且之间有相互联系"。在变更管控领域，代际说明的是各代变更之间，除了"传承"了上第一代的管控思路与模式外，在本代又"衍生"出了新的生命周期节点定义，用于增加新的扩展切面，提供新的能力。
+The definition of generational changes is divided into 5 levels, namely 'G0 ~ G4,' with the following meanings:
 
-变更代际的定义共分为"G0~G4"5个等级，含义分别如下：
+|Generational names|                                     Meanings                                      |Lifecycle definition|Usage scenarios|
+|:----:|:---------------------------------------------------------------------------------:|:----:|:----:|
+|G0| Just do event synchronization access to AlterShield without control capabilities. |Only one event synchronization node.|Suitable for changes with no risk, but data needs to be provided to relevant personnel for retrieval, audit, and other scenarios.|
+|G1|                                  Just do single-node change front-end and back-end control.                                   |There is only one change node in the lifecycle.|Suitable for low-risk changes that do not require complex risk control capabilities, only for scenarios that require pre-entry and post-integrity checks.|
+|G2|                            There is a complete change work order, and at least one batch of sub-nodes is associated with the work order.                             |The lifecycle is divided into four stages: work order start, batch node start, batch node end, and work order end.|Suitable for most incremental changes that require risk control measures.|
+|G3|                            Added perception of the change request stage based on the perception of the complete change work order.                             |On the basis of the G2 generation lifecycle, the change request stage is added as a prerequisite.|Suitable for scenarios where non-technical personnel or designated agents execute changes and require system-assisted pre-risk analysis.|
+|G4|                            Added the ability to make decisions for unattended changes based on the perception of change requests.                             |On the basis of the G3 generation lifecycle, an unattended decision-making stage is added after the change request is submitted.|Suitable for scenarios where the system needs to perform unattended proxy execution of changes.|
 
-|代际名称|含义|生命周期定义|使用场景|
-|:----:|:----:|:----:|:----:|
-|G0|仅做事件同步接入到ChangeRiskPilot，无管控能力|仅有一个事件同步节点|适用于无任何风险的变更，但数据需要提供给相关人员做检索、审计等场景|
-|G1|仅做单节点的变更前后切面管控|生命周期中仅有一个变更节点|适用于低风险变更，无需复杂风险管控能力，仅做事前准入性和事后完整性检查的场景|
-|G2|有完整的变更工单，且工单下关联了至少1个批次的子节点|生命周期分为工单开始 < 各批次节点开始 < 各批次节点结束 < 工单结束四个阶段|适用于多数逐步生效的变更，并需要配套进行风险管控的场景|
-|G3|在完整的变更工单感知基础上，增加了变更提单阶段的感知|生命周期在G2代际的基础上，前置增加了变更提单阶段|适用于非技术人员或专人代理执行变更，需要系统辅助进行事前风险分析的场景|
-|G4|在变更提单感知的基础上，增加了变更无人值守的决策能力|生命周期在G3代际的基础上，变更提单后增加了无人值守决策阶段|适用于需要系统进行无人值守代理执行变更的场景|
+## How should I renovate my access scenario?
+Before integrating changes into AlterShield, the following preparations are required.
 
-## 我的接入场景怎么做改造
-将变更接入到ChangeRiskPilot里面之前，需要准备以下内容。
+1. Firstly, clarify the scenarios you want to control, the degree of risk control strategy required, and which generation of control plan it corresponds to. These factors determine the complexity of your subsequent integration.
+2. Secondly, clarify the correspondence between the concept of 'basic information' in the change information model and the corresponding concept in the scenario you want to control.
+## SDK Define
 
-1. 首先，明确您当前想要管控的场景，需要何种程度的风险管控策略，对应到哪种代际的管控方案，这几点决定了您后续的接入复杂度。
-2. 其次，明确***变更信息模型***中***基础信息***的概念与您想要管控场景中的概念对应关系。
-## SDK 定义
+[Integration of SDK for the G0 generation.](04-intergenerational/01-g0.md)
 
-[G0代际接入SDK](04-intergenerational/01-g0.md)
-[G1代际接入SDK](04-intergenerational/02-g1.md)
-[G2代际接入SDK](04-intergenerational/03-g2.md)
-[G3&G4代际接入SDK](04-intergenerational/04-g3&g4.md)
+[Integration of SDK for the G1 generation.](04-intergenerational/02-g1.md)
+
+[Integration of SDK for the G2 generation.](04-intergenerational/03-g2.md)
+
+[Integration of SDK for the G3 & G4 generations.](04-intergenerational/04-g3&g4.md)
