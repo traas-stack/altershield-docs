@@ -1,33 +1,18 @@
-# Website
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+# AlterShield Document
 
-### Installation
+[View Document](https://traas-stack.github.io/altershield-docs/)
 
-```
-$ yarn
-```
 
-### Local Development
+<!-- CONTACT -->
+# Contact
+- Contact us via Email: traas_stack@antgroup.com / altershield.io@gmail.com
+- Ding Talk Group [QR code](./docs/dingtalk.png)
+- WeChat Official Account [QR code](./docs/wechat.jpg)
+- <a href="https://altershield.slack.com/"><img src="https://img.shields.io/badge/slack-AlterShield-0abd59?logo=slack" alt="slack" /></a>
 
-```
-$ yarn start
-```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-```
-$ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+# Acknowledgments
+Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+- [Docusaurus 2](https://docusaurus.io/)
