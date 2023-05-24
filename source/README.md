@@ -6,8 +6,7 @@
 
 <!-- CONTACT -->
 # Contact
-- Contact us via Email: traas_stack@antgroup.om# 
- / altershield.io@gmail.com
+- Contact us via Email: traas_stack@antgroup.com / altershield.io@gmail.com
 - Ding Talk Group [QR code](./docs/dingtalk.png)
 - WeChat Official Account [QR code](./docs/wechat.jpg)
 - <a href="https://altershield.slack.com/"><img src="https://img.shields.io/badge/slack-AlterShield-0abd59?logo=slack" alt="slack" /></a>
