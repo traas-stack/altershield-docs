@@ -18,7 +18,7 @@ module.exports = {
   title: 'AlterShield',
   tagline: 'Open Change Management Specification',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  baseUrl: '/altershield-docs',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
