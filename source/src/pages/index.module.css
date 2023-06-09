@@ -10,6 +10,7 @@
   overflow: hidden;
   background-image: url("../../static/img/banner.jpg");
   background-size: 100% 100%;
+  background-color: #10A1F3;
 }
 
 @media screen and (max-width: 966px) {

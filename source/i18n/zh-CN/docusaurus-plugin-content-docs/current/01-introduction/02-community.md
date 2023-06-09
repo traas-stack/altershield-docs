@@ -1,8 +1,8 @@
 ---
-sidebar_label: 社区
+sidebar_label: 加入我们
 pagination_next: null
 ---
-# 社区
+# 加入我们
 您好，欢迎来到 AlterShield 开源社区，首先感谢您对 AlterShield 的关注 ❤
 社区目前仍处于初期阶段，诚邀您进行各类的讨论和指正。无论是错别字修正、文档翻译、Bug 修复、变更故障案例讨论、增加新功能，欢迎提 issue 或 pull request 至 Github 社区，也可以加入钉钉群：11360043976 联系我们。
 项目地址：
