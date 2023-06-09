@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://traas-stack.github.io/altershield-docs/blog</id>
+    <id>https://traas-stack.github.io/blog</id>
     <title>AlterShield Blog</title>
     <updated>2023-06-09T03:45:26.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://traas-stack.github.io/altershield-docs/blog"/>
+    <link rel="alternate" href="https://traas-stack.github.io/blog"/>
     <subtitle>AlterShield Blog</subtitle>
-    <icon>https://traas-stack.github.io/altershield-docs/img/favicon.ico</icon>
+    <icon>https://traas-stack.github.io/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Ant Group's change management and control platform AlterShield is officially open source]]></title>
-        <id>https://traas-stack.github.io/altershield-docs/blog/welcome-altershield-v0.1</id>
-        <link href="https://traas-stack.github.io/altershield-docs/blog/welcome-altershield-v0.1"/>
+        <id>https://traas-stack.github.io/blog/welcome-altershield-v0.1</id>
+        <link href="https://traas-stack.github.io/blog/welcome-altershield-v0.1"/>
         <updated>2023-06-09T03:45:26.000Z</updated>
         <summary type="html"><![CDATA[Translation work is ongoing～]]></summary>
         <content type="html"><![CDATA[<p>Translation work is ongoing～</p>]]></content>
