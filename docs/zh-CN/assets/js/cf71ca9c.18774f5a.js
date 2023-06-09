@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkguide=self.webpackChunkguide||[]).push([[7888],{3236:e=>{e.exports=JSON.parse('{"label":"SRE","permalink":"/zh-CN/blog/tags/sre","allTagsPath":"/zh-CN/blog/tags","count":1}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkguide=self.webpackChunkguide||[]).push([[7578],{3768:e=>{e.exports=JSON.parse('{"label":"OCMS","permalink":"/zh-CN/blog/tags/ocms","allTagsPath":"/zh-CN/blog/tags","count":1}')}}]);

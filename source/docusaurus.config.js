@@ -18,7 +18,7 @@ module.exports = {
   title: 'AlterShield',
   tagline: 'Change-Related Failures Terminator',
   url: 'https://traas-stack.github.io/',
-  baseUrl: '/altershield-docs',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
