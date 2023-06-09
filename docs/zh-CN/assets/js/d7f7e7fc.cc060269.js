@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkguide=self.webpackChunkguide||[]).push([[786],{1730:e=>{e.exports=JSON.parse('{"label":"hola","permalink":"/altershield-docs/zh-CN/blog/tags/hola","allTagsPath":"/altershield-docs/zh-CN/blog/tags","count":1}')}}]);

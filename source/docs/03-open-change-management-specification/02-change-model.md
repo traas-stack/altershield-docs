@@ -9,7 +9,7 @@ The change control system implements an "information standardization" approach, 
 
 ---
 
-Before considering how to establish an information model, the first question you need to understand is: how to define change? (For understanding change control systems, please refer to the previous article ["Introduction to Change Control."](../01-introduction/02-what-is-change-management.md))
+Before considering how to establish an information model, the first question you need to understand is: how to define change? (For understanding change control systems, please refer to the previous article ["Introduction to Change Control."](./))
 
 You can try to approach this question from two perspectives: usage scenarios and natural language. Based on these two perspectives, the semantic definition of the basic information of changes can be summarized into a five-tuple:
 

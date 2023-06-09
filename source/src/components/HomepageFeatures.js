@@ -1,45 +1,44 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
+import Translate from '@docusaurus/Translate';
+
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    title: (<Translate>OCMS</Translate>),
+    imageSrc: require('../../static/img/action-one.png').default,
     description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
+      <Translate description="homepage slogan-one" id="homepage slogan-one">
+         The Open Change Management Specification is a protocol for change information technology that unifies various change information standards.
+      </Translate>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    title: (<Translate>Risk Defense</Translate>),
+    imageSrc: require('../../static/img/action-two.png').default,
     description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
+      <Translate description="homepage slogan-two" id="homepage slogan-two">
+        An open and extensible change defense framework, which uses intelligent algorithms such as time series and log text anomaly detection to effectively identify anomalies during changes.
+      </Translate>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    title: (<Translate>Cloud Native</Translate>),
+    imageSrc: require('../../static/img/action-three.png').default,
     description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
+      <Translate description="homepage slogan-three" id="homepage slogan-three">
+        Within the Kubernetes ecosystem, it integrates with native Deployments to provide risk prevention, blocking, and rollback capabilities during changes.
+      </Translate>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({imageSrc, title, description}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+        <img src={imageSrc} className={styles.featureImage} alt={title} />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>

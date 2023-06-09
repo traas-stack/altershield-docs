@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkguide=self.webpackChunkguide||[]).push([[611],{6790:e=>{e.exports=JSON.parse('[{"label":"SRE","permalink":"/altershield-docs/blog/tags/sre","count":1},{"label":"DevOps","permalink":"/altershield-docs/blog/tags/dev-ops","count":1},{"label":"OCMS","permalink":"/altershield-docs/blog/tags/ocms","count":1}]')}}]);

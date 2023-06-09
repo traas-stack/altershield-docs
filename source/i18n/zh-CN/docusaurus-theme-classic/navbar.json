@@ -1,10 +1,18 @@
 {
   "logo.alt": {
-    "message": "My Site Logo",
+    "message": "AlterShield",
     "description": "The alt text of navbar logo"
   },
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
+  },
+  "item.label.Document": {
+    "message": "文档",
+    "description": "Navbar item with label Document"
+  },
+  "item.label.Blog": {
+    "message": "博客",
+    "description": "Navbar item with label Blog"
   }
 }
