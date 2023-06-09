@@ -2,7 +2,6 @@
 hide_title: true
 sidebar_label: What Is AlterShield
 pagination_next: null
-slug: /
 ---
 
 <div align="center">
@@ -28,7 +27,7 @@ slug: /
 
 
 **Open Change Management Specification**(OCMS)is a set of change management technical standards applicable to SRE and DevOps modes. OCMS provides universal change management solutions driven by data, which can integrate change data from different departments or enterprises. By integrating standardization, OCMS helps users to achieve the ability to perceive, intervene, analyze risks, and prevent risks in the entire life cycle of changes, thereby reducing the impact of changes on business. OCMS aims to provide an efficient change management solution for information technology-related enterprises and help users optimize system performance, enhance reliability, and stability under the SRE and DevOps modes.
-Before we begin, you may need to understand [what change management is](02-what-is-change-management.md).
+Before we begin, you may need to understand [what change management is](/).
 
 ## What does it provide
 

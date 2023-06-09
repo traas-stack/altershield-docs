@@ -269,5 +269,26 @@
   "theme.tags.tagsPageTitle": {
     "message": "标签",
     "description": "The title of the tag list page"
+  },
+  "homepage slogan-one": {
+    "message": "Open Change Management Specification是一种变更信息技术协议，统一了各类变更信息标准。",
+    "description": "homepage slogan-one"
+  },
+  "homepage slogan-two": {
+    "message": "开放扩展的变更防御框架，通过时序、日志文本异常检测智能算法，有效识别变更期间的异常。",
+    "description": "homepage slogan-two"
+  },
+  "homepage slogan-three": {
+    "message": "在Kubernetes生态下，与原生Deployment集成，提供变更期间风险防御、阻断、回滚的能力。",
+    "description": "homepage slogan-three"
+  },
+  "OCMS": {
+    "message": "OCMS"
+  },
+  "Risk Defense": {
+    "message": "变更防御"
+  },
+  "Cloud Native": {
+    "message": "云原生"
   }
 }

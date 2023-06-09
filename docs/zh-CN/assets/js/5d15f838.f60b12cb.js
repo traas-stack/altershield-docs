@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkguide=self.webpackChunkguide||[]).push([[3131],{4156:e=>{e.exports=JSON.parse('{"label":"OCMS","permalink":"/altershield-docs/zh-CN/blog/tags/ocms","allTagsPath":"/altershield-docs/zh-CN/blog/tags","count":1}')}}]);

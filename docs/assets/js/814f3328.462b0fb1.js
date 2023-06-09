@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkguide=self.webpackChunkguide||[]).push([[535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Ant Group\'s change management and control platform AlterShield is officially open source","permalink":"/altershield-docs/blog/welcome-altershield-v0.1"}]}')}}]);
