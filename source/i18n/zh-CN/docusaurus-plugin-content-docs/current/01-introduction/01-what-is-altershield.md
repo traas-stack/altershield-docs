@@ -16,15 +16,19 @@ pagination_next: null
     Open Change Management Specification
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">查看演示</a>
+    <a href="https://github.com/othneildrew/Best-README-Template">源码</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">报告bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">请求功能</a>
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">提交bug</a>
+
   </p>
 </div>
 
-![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)
+<p align="center">
+  <a href="https://altershield.slack.com/"><img src="https://img.shields.io/badge/slack-AlterShield-0abd59?logo=slack" alt="slack" /></a>
+  <a href="https://github.com/traas-stack/AlterShield"><img src="https://img.shields.io/github/stars/traas-stack/AlterShield?style=flat-square"></a>
+  <a href="https://github.com/traas-stack/AlterShield/issues"><img src="https://img.shields.io/github/issues/traas-stack/AlterShield"></a>
+  <a href=""><img src="https://img.shields.io/badge/license-Apache--2.0-green.svg"></a>
+</p>
 
 Open Change Management Specification (OCMS)是一套可适用于SRE和DevOps模式的变更管理技术标准。OCMS以数据驱动的方式，提供了普适性的变更管控方案，可整合来自不同部门或企业的变更数据。OCMS通过整合标准化，帮助用户实现对变更全生命周期的感知、干预、风险分析和风险防控等能力，从而降低变更造成的业务影响。OCMS旨在为信息技术相关企业提供一种高效的变更管理解决方案，并帮助用户在SRE和DevOps模式下优化系统表现，提高可靠性和稳定性。
 
