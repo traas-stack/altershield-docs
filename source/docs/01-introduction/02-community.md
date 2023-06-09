@@ -1,8 +1,8 @@
 ---
-sidebar_label: Community
+sidebar_label: Join Us
 pagination_next: null
 ---
-# Community
+# Join Us
 Hello and welcome to the AlterShield open source community. Firstly, we thank you for your interest in AlterShield ❤ 
  
 The community is still in its early stages and we welcome all kinds of discussions and corrections. Whether it is correcting typos, translating documents, fixing bugs, discussing change failure cases, or adding new features, please feel free to raise an issue or pull request on the Github community, or join our DingTalk group at 11360043976 to contact us. 

@@ -18,7 +18,7 @@ authors:
 
 date: 2023-06-09T12:00
 
-tags: [SRE, DevOps, OCMS, AlterShield, Kubernetes]
+tags: [SRE, DevOps, OCMS, AlterShield, Kubernetes, AIOps]
 ---
 # AlterShield 简介
 AlterShield 的出现，旨在通过系统化的方式解决SRE领域变更引发的稳定性风险问题，变更管控领域相关的问题。
@@ -88,6 +88,7 @@ AlterShield 是蚂蚁集团内部研发了近 5 年的变更管控平台 OpsClou
 
 因此，AlterShield 在进行变更管控的第一步前提就是要做到不同背景下的变更信息及技术统一，其信息协议的定义可以参考下图：
 
+![](./altershield-v0.1-image/4.png)
 这样信息协议标准化的好处是：
 1. 可以兼容不同背景下的各类变更，实现了多类型变更的“统一管控”
 2. 屏蔽了上层业务场景带来的信息差异，使得变更管控后续的变更防御、变更搜索、变更审计可以基于一套标准的信息模型来进行
@@ -170,6 +171,7 @@ AlterShield 是蚂蚁集团内部研发了近 5 年的变更管控平台 OpsClou
 3. 防御能力异步化：防御校验本身需要一定的时间（尤其对于可观测性相关的检测来说），这部分时间会带来变更效率的下降（因为操作变更的人员需要等待校验结论）。因此，针对分批次变更的场景下，防御框架提供了异步化校验的能力，利用变更本身执行的时间替换防御校验的时间，做风险与效率的平衡。
 
 ![](./altershield-v0.1-image/9.png)
+![](./altershield-v0.1-image/20.png)
 
 ### 变更防御能力（Defender Service）
 
@@ -180,6 +182,7 @@ AlterShield 是蚂蚁集团内部研发了近 5 年的变更管控平台 OpsClou
 对于可观测性领域，OpenTelemetry 给出了清晰的三个子领域定义（Metric、Logging、Tracing），其中“Metric”指的就是监控中时序指标（如：CPU利用率、系统RPC服务调用成功率等）。AlterShield 针对时序异常检测，贴合变更分批次执行的背景，建设了“分批变更监控”。
 
 ![](./altershield-v0.1-image/10.png)
+
 
 如上如示意，变更场景和普通场景在时序异常检测的区别是，变更场景是有明显的两个时间点的：**变更开始、变更结束。因此，我们在获取到监控时序数据后，主要是做变更前后两段时序的对比异常检测**。
 

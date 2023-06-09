@@ -13,7 +13,7 @@ Before considering how to establish an information model, the first question you
 
 You can try to approach this question from two perspectives: usage scenarios and natural language. Based on these two perspectives, the semantic definition of the basic information of changes can be summarized into a five-tuple:
 
-![图](./change_model.png)
+![图](./01-change-model-image/1.png)
 
 
 The above is the definition of basic information in the change information model.
@@ -33,7 +33,7 @@ After referencing numerous 'change actions,' changes can be roughly divided into
 - Infrastructure level changes (e.g. deleting a physical machine node): For these types of changes, their implementation may be far from the application system, but the object of the change must be a batch of deployment resources on which some application systems depend. 
 
 Therefore, based on the resources, dependencies, and attributes possessed by application systems, we can deconstruct the change impact information related to the information technology industry. The summary is shown in the following figure:
-> 贴一张应用部署模式图
+> TODO a deployment diagram for the application
 
 According to the content shown in the above diagram, the impact scope information of a change can be divided into the following structures:
 - Internal system impact scope: Technical 'attributes' possessed by an application system itself, including HTTP services, RPC services, SQL statements accessing funds, and printed log files published within the system.
@@ -55,6 +55,8 @@ In AlterShield, we have defined several common implementation methods for change
 - Batch mode based on traffic proportion: Gradual implementation based on traffic proportion, such as 1%, 5%, 10%, etc., commonly used for changes strongly related to business or user interaction. (Example: Upgrading front-end/client systems and activating operation activities, etc.)
 - Independent environment verification mode for changes that cannot be batched: For changes that cannot be split (e.g. DB configuration type changes), an independent environment is required for gray verification to validate the correctness of the change.
 ### JSON Schema
+
+![图](./01-change-model-image/2.png)
 
 Above are the three dimensions of the standard definition for the change information model, and the specific JSON Schema definitions are as follows:
 
