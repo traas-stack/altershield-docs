@@ -1,25 +1,17 @@
 ---
 slug: welcome-altershield-v0.1
 title: 蚂蚁集团变更管控平台 AlterShield 正式开源
-authors:
-  - name: Yuefan Wang
-    title: Antgroup
-    url: https://github.com/yvan-wyf
-    image_url: https://avatars.githubusercontent.com/u/8602438?v=4
-  - name: Yalong Jin
-    title: Antgroup
-    url: https://github.com/jinyalong
-    image_url: https://avatars.githubusercontent.com/u/53113006?v=4
-    email: jimarcey@gmail.com
-  - name: Haouan Yu
-    title: Antgroup
-    url: https://github.com/yhaoxuan
-    image_url: https://avatars.githubusercontent.com/u/114649838?v=4
+authors: [jinyalong, wangyuefan, yuhaoxuan]
 
 date: 2023-06-09T12:00
 
 tags: [SRE, DevOps, OCMS, AlterShield, Kubernetes, AIOps]
 ---
+
+AlterShield 的出现，旨在通过系统化的方式解决SRE领域变更引发的稳定性风险问题，变更管控领域相关的问题。
+
+<!-- truncate -->
+
 # AlterShield 简介
 AlterShield 的出现，旨在通过系统化的方式解决SRE领域变更引发的稳定性风险问题，变更管控领域相关的问题。
 ## 什么是变更管控？

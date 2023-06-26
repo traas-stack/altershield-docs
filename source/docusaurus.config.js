@@ -34,6 +34,7 @@ module.exports = {
         },
         blog: {
           showReadingTime: true,
+          blogTitle: 'AlterShield blog!',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

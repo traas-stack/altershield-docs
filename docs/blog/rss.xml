@@ -4,10 +4,20 @@
         <title>AlterShield Blog</title>
         <link>https://traas-stack.github.io/blog</link>
         <description>AlterShield Blog</description>
-        <lastBuildDate>Fri, 09 Jun 2023 03:45:26 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 26 Jun 2023 06:39:31 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[AlterShield Hangzhou's first offline gathering]]></title>
+            <link>https://traas-stack.github.io/blog/meetup-0618</link>
+            <guid>https://traas-stack.github.io/blog/meetup-0618</guid>
+            <pubDate>Mon, 26 Jun 2023 06:39:31 GMT</pubDate>
+            <description><![CDATA[Translation work is ongoing～]]></description>
+            <content:encoded><![CDATA[<p>Translation work is ongoing～</p>]]></content:encoded>
+            <category>MeetUp</category>
+            <category>AlterShield</category>
+        </item>
         <item>
             <title><![CDATA[Ant Group's change management and control platform AlterShield is officially open source]]></title>
             <link>https://traas-stack.github.io/blog/welcome-altershield-v0.1</link>
