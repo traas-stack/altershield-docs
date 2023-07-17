@@ -2,16 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://traas-stack.github.io/blog</id>
     <title>AlterShield Blog</title>
-    <updated>2023-06-26T06:39:31.381Z</updated>
+    <updated>2023-07-17T05:47:48.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://traas-stack.github.io/blog"/>
     <subtitle>AlterShield Blog</subtitle>
     <icon>https://traas-stack.github.io/img/favicon.ico</icon>
     <entry>
+        <title type="html"><![CDATA[「0710」AlterShield线上MeetUp]]></title>
+        <id>https://traas-stack.github.io/blog/meetup-0710</id>
+        <link href="https://traas-stack.github.io/blog/meetup-0710"/>
+        <updated>2023-07-17T05:47:48.000Z</updated>
+        <summary type="html"><![CDATA[Translation work is ongoing～]]></summary>
+        <content type="html"><![CDATA[<p>Translation work is ongoing～</p>]]></content>
+        <author>
+            <name>Yuefan Wang</name>
+            <uri>https://github.com/yvan-wyf</uri>
+        </author>
+        <author>
+            <name>Yalong Jin</name>
+            <uri>https://github.com/jinyalong</uri>
+        </author>
+        <author>
+            <name>Haouan Yu</name>
+            <uri>https://github.com/yhaoxuan</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[AlterShield Hangzhou's first offline gathering]]></title>
         <id>https://traas-stack.github.io/blog/meetup-0618</id>
         <link href="https://traas-stack.github.io/blog/meetup-0618"/>
-        <updated>2023-06-26T06:39:31.381Z</updated>
+        <updated>2023-06-26T12:38:49.000Z</updated>
         <summary type="html"><![CDATA[Translation work is ongoing～]]></summary>
         <content type="html"><![CDATA[<p>Translation work is ongoing～</p>]]></content>
         <author>
