@@ -6,6 +6,7 @@ image: ./meetup-0618/1.png
 hide_table_of_contents: false
 
 tags: [MeetUp, AlterShield, 蚂蚁集团, Bilibili, 联通软件研究院, SRE]
+
 ---
 联通软件研究院，bilibili，蚂蚁集团的从事变更相关的同学在杭州首次线下的MeetUp，本次线下交流的都是在SRE领域有着丰富经验的同学，都在各自的公司参与了SRE关键工作和平台的建设，大家对于SRE如何做好变更的风险防控，以及中间可能会遇到的问题进行了讨论和交流，下面整理了一些讨论交流的内容，分享给大家。
 

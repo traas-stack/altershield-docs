@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkguide=self.webpackChunkguide||[]).push([[8942],{7470:e=>{e.exports=JSON.parse('{"permalink":"/zh-CN/blog/tags/oppo","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"AlterShield blog!"}')}}]);
