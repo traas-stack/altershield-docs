@@ -89,7 +89,11 @@ spec:
 ## Operator部署
 
 ### 使用K8S部署
+我们提供了一个快速部署的方式，直接将如下文件的内容部署到您的集群
 
+`wget https://raw.githubusercontent.com/traas-stack/altershield-operator/main/quick-start.yaml`
+
+`kubectl apply -f quick-start.yaml`
 ## 算法部署
 
 更多详细信息前往[monitor-check仓库](https://github.com/traas-stack/altershield-monitorCheck/blob/main/README_CN.md)查看
