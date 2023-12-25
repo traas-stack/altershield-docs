@@ -1,6 +1,6 @@
 ---
 slug: meetup-0618
-title: 杭州首次线下MeetUp
+title: 「MeetUp」杭州首次线下MeetUp
 authors: [wangyuefan,jinyalong]
 image: ./meetup-0618/1.png
 hide_table_of_contents: false
