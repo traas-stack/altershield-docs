@@ -4,12 +4,20 @@
         <title>AlterShield Blog</title>
         <link>https://traas-stack.github.io/blog</link>
         <description>AlterShield Blog</description>
-        <lastBuildDate>Mon, 17 Jul 2023 05:47:48 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 25 Dec 2023 03:12:05 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[「0710」AlterShield线上MeetUp]]></title>
+            <title><![CDATA[「MeetUp」AlterShield x TongHuaShun 0910 Offline MeetUp]]></title>
+            <link>https://traas-stack.github.io/blog/meetup-0910</link>
+            <guid>https://traas-stack.github.io/blog/meetup-0910</guid>
+            <pubDate>Mon, 25 Dec 2023 03:12:05 GMT</pubDate>
+            <description><![CDATA[Translation work is ongoing～]]></description>
+            <content:encoded><![CDATA[<p>Translation work is ongoing～</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[「MeetUp」AlterShield 0710 Online MeetUp]]></title>
             <link>https://traas-stack.github.io/blog/meetup-0710</link>
             <guid>https://traas-stack.github.io/blog/meetup-0710</guid>
             <pubDate>Mon, 17 Jul 2023 05:47:48 GMT</pubDate>
@@ -17,7 +25,7 @@
             <content:encoded><![CDATA[<p>Translation work is ongoing～</p>]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[AlterShield Hangzhou's first offline gathering]]></title>
+            <title><![CDATA[「MeetUp」AlterShield Hangzhou's first offline gathering]]></title>
             <link>https://traas-stack.github.io/blog/meetup-0618</link>
             <guid>https://traas-stack.github.io/blog/meetup-0618</guid>
             <pubDate>Mon, 26 Jun 2023 12:38:49 GMT</pubDate>
