@@ -2,16 +2,62 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://traas-stack.github.io/blog</id>
     <title>AlterShield Blog</title>
-    <updated>2023-12-25T03:12:05.246Z</updated>
+    <updated>2024-04-16T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://traas-stack.github.io/blog"/>
     <subtitle>AlterShield Blog</subtitle>
     <icon>https://traas-stack.github.io/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[「MeetUp」AlterShield x TongHuaShun 0910 Offline MeetUp]]></title>
-        <id>https://traas-stack.github.io/blog/meetup-0910</id>
-        <link href="https://traas-stack.github.io/blog/meetup-0910"/>
-        <updated>2023-12-25T03:12:05.246Z</updated>
+        <title type="html"><![CDATA[「MeetUp」AlterShield x 国泰君安 x DiDi x 富途]]></title>
+        <id>https://traas-stack.github.io/blog/meetup-20240416</id>
+        <link href="https://traas-stack.github.io/blog/meetup-20240416"/>
+        <updated>2024-04-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Translation work is ongoing～]]></summary>
+        <content type="html"><![CDATA[<p>Translation work is ongoing～</p>]]></content>
+        <author>
+            <name>Yalong Jin</name>
+            <uri>https://github.com/jinyalong</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「MeetUp」AlterShield x LiXiang]]></title>
+        <id>https://traas-stack.github.io/blog/meetup-20240319</id>
+        <link href="https://traas-stack.github.io/blog/meetup-20240319"/>
+        <updated>2024-03-19T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Translation work is ongoing～]]></summary>
+        <content type="html"><![CDATA[<p>Translation work is ongoing～</p>]]></content>
+        <author>
+            <name>Yalong Jin</name>
+            <uri>https://github.com/jinyalong</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「MeetUp」AlterShield x WeiPingHui]]></title>
+        <id>https://traas-stack.github.io/blog/meetup-20231226</id>
+        <link href="https://traas-stack.github.io/blog/meetup-20231226"/>
+        <updated>2023-12-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Translation work is ongoing～]]></summary>
+        <content type="html"><![CDATA[<p>Translation work is ongoing～</p>]]></content>
+        <author>
+            <name>Yalong Jin</name>
+            <uri>https://github.com/jinyalong</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[AlterShield V1.0]]></title>
+        <id>https://traas-stack.github.io/blog/altershield-v1.0</id>
+        <link href="https://traas-stack.github.io/blog/altershield-v1.0"/>
+        <updated>2023-12-14T00:00:00.000Z</updated>
+        <author>
+            <name>Yalong Jin</name>
+            <uri>https://github.com/jinyalong</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[「MeetUp」AlterShield x TongHuaShun]]></title>
+        <id>https://traas-stack.github.io/blog/meetup-20230910</id>
+        <link href="https://traas-stack.github.io/blog/meetup-20230910"/>
+        <updated>2023-09-10T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Translation work is ongoing～]]></summary>
         <content type="html"><![CDATA[<p>Translation work is ongoing～</p>]]></content>
         <author>
@@ -24,10 +70,10 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[「MeetUp」AlterShield 0710 Online MeetUp]]></title>
-        <id>https://traas-stack.github.io/blog/meetup-0710</id>
-        <link href="https://traas-stack.github.io/blog/meetup-0710"/>
-        <updated>2023-07-17T05:47:48.000Z</updated>
+        <title type="html"><![CDATA[「MeetUp」AlterShield x MeiTuan x ZuoYeBang x OPPO]]></title>
+        <id>https://traas-stack.github.io/blog/meetup-20230710</id>
+        <link href="https://traas-stack.github.io/blog/meetup-20230710"/>
+        <updated>2023-07-10T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Translation work is ongoing～]]></summary>
         <content type="html"><![CDATA[<p>Translation work is ongoing～</p>]]></content>
         <author>
@@ -44,10 +90,10 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[「MeetUp」AlterShield Hangzhou's first offline gathering]]></title>
-        <id>https://traas-stack.github.io/blog/meetup-0618</id>
-        <link href="https://traas-stack.github.io/blog/meetup-0618"/>
-        <updated>2023-06-26T12:38:49.000Z</updated>
+        <title type="html"><![CDATA[「MeetUp」AlterShield x bilibili x ChinaUnion]]></title>
+        <id>https://traas-stack.github.io/blog/meetup-20230618</id>
+        <link href="https://traas-stack.github.io/blog/meetup-20230618"/>
+        <updated>2023-06-18T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Translation work is ongoing～]]></summary>
         <content type="html"><![CDATA[<p>Translation work is ongoing～</p>]]></content>
         <author>
@@ -63,9 +109,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Ant Group's change management and control platform AlterShield is officially open source]]></title>
-        <id>https://traas-stack.github.io/blog/welcome-altershield-v0.1</id>
-        <link href="https://traas-stack.github.io/blog/welcome-altershield-v0.1"/>
-        <updated>2023-06-09T03:45:26.000Z</updated>
+        <id>https://traas-stack.github.io/blog/altershield-v0.1</id>
+        <link href="https://traas-stack.github.io/blog/altershield-v0.1"/>
+        <updated>2023-06-09T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Translation work is ongoing～]]></summary>
         <content type="html"><![CDATA[<p>Translation work is ongoing～</p>]]></content>
         <author>
@@ -74,7 +120,6 @@
         </author>
         <author>
             <name>Yalong Jin</name>
-            <email>jimarcey@gmail.com</email>
             <uri>https://github.com/jinyalong</uri>
         </author>
         <author>

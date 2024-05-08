@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkguide=self.webpackChunkguide||[]).push([[2019],{9120:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/sre","page":1,"postsPerPage":1,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"AlterShield blog!"}')}}]);
