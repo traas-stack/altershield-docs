@@ -35,6 +35,11 @@ module.exports = {
         blog: {
           showReadingTime: true,
           blogTitle: 'AlterShield blog!',
+          postsPerPage: 'ALL',
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
+          remarkPlugins: [require('remark-math')],
+          rehypePlugins: [require('rehype-katex')],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

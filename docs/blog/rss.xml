@@ -4,31 +4,61 @@
         <title>AlterShield Blog</title>
         <link>https://traas-stack.github.io/blog</link>
         <description>AlterShield Blog</description>
-        <lastBuildDate>Mon, 25 Dec 2023 03:12:05 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 16 Apr 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[「MeetUp」AlterShield x TongHuaShun 0910 Offline MeetUp]]></title>
-            <link>https://traas-stack.github.io/blog/meetup-0910</link>
-            <guid>https://traas-stack.github.io/blog/meetup-0910</guid>
-            <pubDate>Mon, 25 Dec 2023 03:12:05 GMT</pubDate>
+            <title><![CDATA[「MeetUp」AlterShield x 国泰君安 x DiDi x 富途]]></title>
+            <link>https://traas-stack.github.io/blog/meetup-20240416</link>
+            <guid>https://traas-stack.github.io/blog/meetup-20240416</guid>
+            <pubDate>Tue, 16 Apr 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Translation work is ongoing～]]></description>
             <content:encoded><![CDATA[<p>Translation work is ongoing～</p>]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[「MeetUp」AlterShield 0710 Online MeetUp]]></title>
-            <link>https://traas-stack.github.io/blog/meetup-0710</link>
-            <guid>https://traas-stack.github.io/blog/meetup-0710</guid>
-            <pubDate>Mon, 17 Jul 2023 05:47:48 GMT</pubDate>
+            <title><![CDATA[「MeetUp」AlterShield x LiXiang]]></title>
+            <link>https://traas-stack.github.io/blog/meetup-20240319</link>
+            <guid>https://traas-stack.github.io/blog/meetup-20240319</guid>
+            <pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Translation work is ongoing～]]></description>
             <content:encoded><![CDATA[<p>Translation work is ongoing～</p>]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[「MeetUp」AlterShield Hangzhou's first offline gathering]]></title>
-            <link>https://traas-stack.github.io/blog/meetup-0618</link>
-            <guid>https://traas-stack.github.io/blog/meetup-0618</guid>
-            <pubDate>Mon, 26 Jun 2023 12:38:49 GMT</pubDate>
+            <title><![CDATA[「MeetUp」AlterShield x WeiPingHui]]></title>
+            <link>https://traas-stack.github.io/blog/meetup-20231226</link>
+            <guid>https://traas-stack.github.io/blog/meetup-20231226</guid>
+            <pubDate>Tue, 26 Dec 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Translation work is ongoing～]]></description>
+            <content:encoded><![CDATA[<p>Translation work is ongoing～</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[AlterShield V1.0]]></title>
+            <link>https://traas-stack.github.io/blog/altershield-v1.0</link>
+            <guid>https://traas-stack.github.io/blog/altershield-v1.0</guid>
+            <pubDate>Thu, 14 Dec 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[「MeetUp」AlterShield x TongHuaShun]]></title>
+            <link>https://traas-stack.github.io/blog/meetup-20230910</link>
+            <guid>https://traas-stack.github.io/blog/meetup-20230910</guid>
+            <pubDate>Sun, 10 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Translation work is ongoing～]]></description>
+            <content:encoded><![CDATA[<p>Translation work is ongoing～</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[「MeetUp」AlterShield x MeiTuan x ZuoYeBang x OPPO]]></title>
+            <link>https://traas-stack.github.io/blog/meetup-20230710</link>
+            <guid>https://traas-stack.github.io/blog/meetup-20230710</guid>
+            <pubDate>Mon, 10 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Translation work is ongoing～]]></description>
+            <content:encoded><![CDATA[<p>Translation work is ongoing～</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[「MeetUp」AlterShield x bilibili x ChinaUnion]]></title>
+            <link>https://traas-stack.github.io/blog/meetup-20230618</link>
+            <guid>https://traas-stack.github.io/blog/meetup-20230618</guid>
+            <pubDate>Sun, 18 Jun 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Translation work is ongoing～]]></description>
             <content:encoded><![CDATA[<p>Translation work is ongoing～</p>]]></content:encoded>
             <category>MeetUp</category>
@@ -36,12 +66,11 @@
         </item>
         <item>
             <title><![CDATA[Ant Group's change management and control platform AlterShield is officially open source]]></title>
-            <link>https://traas-stack.github.io/blog/welcome-altershield-v0.1</link>
-            <guid>https://traas-stack.github.io/blog/welcome-altershield-v0.1</guid>
-            <pubDate>Fri, 09 Jun 2023 03:45:26 GMT</pubDate>
+            <link>https://traas-stack.github.io/blog/altershield-v0.1</link>
+            <guid>https://traas-stack.github.io/blog/altershield-v0.1</guid>
+            <pubDate>Fri, 09 Jun 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Translation work is ongoing～]]></description>
             <content:encoded><![CDATA[<p>Translation work is ongoing～</p>]]></content:encoded>
-            <author>jimarcey@gmail.com (Yalong Jin)</author>
             <category>SRE</category>
             <category>DevOps</category>
             <category>OCMS</category>
