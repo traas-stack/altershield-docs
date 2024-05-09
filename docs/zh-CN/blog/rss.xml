@@ -17,7 +17,7 @@
             <content:encoded><![CDATA[<blockquote><p>AlterShield社区从3月份开始筹备，于<code>4月16日 10:00-12:00</code>举办了一次比较大的线上MeetUp。
 其中参与的公司有国泰君安、同程旅行、滴滴出行、富途科技，线上参会人数共计25人。</p></blockquote><p><strong>MeetUp议程如下：</strong></p><ol><li>蚂蚁集团俞灏宣分享《变更管控的方法与智能化实践》
 <img loading="lazy" src="/zh-CN/assets/images/1-dd54281f9dff26a8cf4b303db61327a5.png" width="1500" height="1018" class="img_ev3q"></li><li>富途科技肖先敏分享了富途的变更管控现状以及主要的低效点
-<img loading="lazy" src="/zh-CN/assets/images/2-d39891df9bf09d4647ea6e6a846b86c4.png" width="1500" height="850" class="img_ev3q"></li><li>同程旅行刘明松（运维研发负责人，故障生命周期研发负责人）分享了同程旅行内部变更管控的现状以及问题和痛点
+<img loading="lazy" src="/zh-CN/assets/images/2-d39891df9bf09d4647ea6e6a846b86c4.png" width="1500" height="850" class="img_ev3q"></li><li>同程旅行刘明松分享了同程旅行内部变更管控的现状以及问题和痛点
 <img loading="lazy" src="/zh-CN/assets/images/3-a30f2e35caa4181fb87476f572758610.png" width="1500" height="949" class="img_ev3q"><img loading="lazy" src="/zh-CN/assets/images/4-da4681843cd8beadef11a4f609486b3a.png" width="1500" height="969" class="img_ev3q"></li><li>滴滴吉原杰分享了内部目前的一些痛点和诉求
 <img loading="lazy" src="/zh-CN/assets/images/5-30c3d158ac77b13d0bc5f34834f5fd27.png" width="488" height="224" class="img_ev3q"></li><li>国泰君安郭建华分享了内部变更管控现状以及一些探讨问题
 <img loading="lazy" src="/zh-CN/assets/images/6-c80126188614a995f03ed1185c0c0d18.png" width="1500" height="875" class="img_ev3q"></li></ol><p>后续大家集思广益针对上述问题展开了探讨，相关问题讨论详情见下面。</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="问题讨论">问题讨论<a href="#问题讨论" class="hash-link" aria-label="问题讨论的直接链接" title="问题讨论的直接链接">​</a></h2><ol><li><p>变更影响上下游如何分析的？</p><p>静态程序分析：代码逻辑的影响（接口、db表、sql）。<br>
